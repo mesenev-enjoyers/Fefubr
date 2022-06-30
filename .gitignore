@@ -1,1 +1,10 @@
 node_modules
+
+
+# Backend
+venv
+.idea
+db.sqlite3
+**/__pycache__/
+*.pyc
+*.pyo
