@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .models import *
 from .serializers import *
+from .models_subscription import *
 
 
 class SubscribeListView(generics.ListCreateAPIView):
