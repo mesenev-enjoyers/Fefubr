@@ -18,4 +18,4 @@ Destroy Current token
 Returns user's subscriptions
 - users/subscribe/**id** 
   - user(id) - who  ^^  subscribed
-  - subscribe who this user subscribed to
+  - subscribe - who this user subscribed to
