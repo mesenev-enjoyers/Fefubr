@@ -2,11 +2,11 @@
 <div class="root">
   <nav class="top-menu">
     <ul class="menu-main">
-      <li class="left-item"><a href="">Все публикации</a></li>
-      <li class="left-item"><a href="">Моя лента</a></li>
-      <li class="left-item"><a href="">Общение</a></li>
-      <li class="right-item"><a href="">Войти/Зарегистрироваьтся</a></li>
-      <li class="right-item"><a href="">Профиль</a></li>
+      <li class="left-item"><a href="/">Все публикации</a></li>
+      <li class="left-item"><a href="/userfeed">Моя лента</a></li>
+      <li class="left-item"><a href="/chats">Общение</a></li>
+      <li class="right-item"><a href="/authorization">Войти/Зарегистрироваьтся</a></li>
+      <li class="right-item"><a href="/profile">Профиль</a></li>
     </ul>
   </nav>
 </div>
@@ -39,7 +39,7 @@ export default {
 .menu-main a {
   text-decoration: none;
   display: block;
-  line-height: 80px;
+  line-height: 55px;
   padding: 0 20px;
   font-size: 16px;
   letter-spacing: 2px;
@@ -51,7 +51,7 @@ export default {
 .menu-main a:hover {background: rgba(0,0,0,.3);}
 @media (max-width: 830px) {
   .menu-main {
-    padding-top: 90px;
+    padding-top: 20px;
     text-align: center;
   }
   .menu-main li {
