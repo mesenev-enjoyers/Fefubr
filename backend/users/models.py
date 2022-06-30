@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
         return self.username
 
 
-class UserSubscribed(models.Model):
+class UserSubscribtion(models.Model):
     user = models.ForeignKey(CustomUser, related_name='subscribed_user_on_user', on_delete=models.CASCADE)
     subscribe = models.ForeignKey(CustomUser, related_name='subscribe_target', on_delete=models.CASCADE)
 
@@ -21,7 +21,7 @@ class UserSubscribed(models.Model):
         unique_together = ('user', 'subscribe')
 
 
-class TagSubscribed(models.Model):
+class TagSubscribtion(models.Model):
     user = models.ForeignKey(CustomUser, related_name='subscribed_user_on_tag', on_delete=models.CASCADE)
     tag_subscribe = models.ForeignKey(Tag, related_name='subscribe_tag', on_delete=models.CASCADE)
 

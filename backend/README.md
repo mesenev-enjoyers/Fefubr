@@ -12,3 +12,10 @@ Returns token
 
 Destroy Current token
 - auth/logout (POST) - add token in header
+
+
+## Subscriptions, Tags
+Returns user's subscriptions
+- users/subscribe/**id** 
+  - user(id) - who  ^^  subscribed
+  - subscribe who this user subscribed to
