@@ -8,6 +8,7 @@ class CustomUser(AbstractUser):
     rating = models.IntegerField(default=0)
     status = models.CharField(max_length=255)
     avatar = models.ImageField(default='default_avatar.png', upload_to='avatars')
+    REQUIRED_FIELDS = ['rating', 'status']
 
     def __str__(self):
         return self.username
