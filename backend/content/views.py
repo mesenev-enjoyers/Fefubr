@@ -3,7 +3,7 @@ from rest_framework import generics, mixins
 
 from .serializers import *
 from .models import *
-from .likes import  ContentAPIMixin
+from .likes import ContentAPIMixin
 
 
 class TagListView(generics.ListCreateAPIView):
@@ -16,7 +16,7 @@ class ArticleListView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         query = Article.objects.all()
-        tag = self.request.query_params.get('tag')
+        tag = self.request.query_params.get('tag') # гет параметры
         user = self.request.query_params.get('user')
         if user is not None:
             query = query.filter(creator=user)
@@ -28,5 +28,21 @@ class ArticleListView(generics.ListCreateAPIView):
 class ArticleView(ContentAPIMixin):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
+
+
+class CommentListView(generics.ListCreateAPIView):
+    serializer_class = CommentSerializer
+
+    def get_queryset(self):
+        query = Comment.objects.all()
+        article = self.request.query_params.get('article')
+        if article is not None:
+            query = query.filter(article_id=article)
+        return query
+
+
+class CommentView(ContentAPIMixin):
+    serializer_class = CommentSerializer
+    queryset = Comment.objects.all()
 
 

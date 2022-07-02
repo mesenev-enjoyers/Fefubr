@@ -4,4 +4,7 @@ urlpatterns = [
     path('tag', TagListView.as_view()),
     path('article', ArticleListView.as_view()),
     path('article/<int:pk>', ArticleView.as_view()),
+    path('comment', CommentListView.as_view()),
+    path('comment/<int:pk>', CommentView.as_view()),
+
 ]

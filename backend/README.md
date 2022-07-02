@@ -19,7 +19,7 @@ Destroy Current token
 
 ## Subscriptions, Tags
 Returns user's tags
-- users/tags/
+- users/tags/ (GET, POST)
   - user(id) - who is subscribed
   - tag(id) - who this user subscribed to(tag)
     - Get parameters:
@@ -31,7 +31,7 @@ Delete user's tags
   
 
 Returns user's subscribtions
-- users/subscribe/ 
+- users/subscribe/  (GET,POST)
   - user(id) - who is subscribed
   - subscribe(id) - who this user subscribed to(user)
     - Get parameters:
@@ -42,8 +42,36 @@ Delete user's subscribtion
 
 
 ## Article
-Returns article
-- content/article
-    - Get parameters:
-      - ?tag(id) filtering by tag
-      - ?user(id) filtering by user
+Returns articles
+- content/article  (GET, POST)
+  - creator(id)
+  - name
+  - content
+  - tags(id..)
+  - picture
+  - Get parameters:
+    - ?tag(id) filtering by tag
+    - ?user(id) filtering by user
+
+Returns concrete article
+
+- content/article/{id}
+  - Get parameters:
+    - ?like=True - sets like
+    - ?unlike=True - removes like
+
+
+## Comment
+- content/comment  (GET,POST)
+  - creator(id)
+  - article(id)
+  - content
+  - -reply(id on comment)
+  - Get parameners:
+    - ?article(id) - returns comment of concrete article
+
+Returns concrete comment
+- content/comment/{id}
+  - Get parameters:
+    - ?like=True - sets like
+    - ?unlike=True - removes like
