@@ -19,9 +19,11 @@ Destroy Current token
 
 ## Subscriptions, Tags
 Returns user's tags
-- users/tags/?user={int}  - if ?user is null - returns current user's tags
+- users/tags/
   - user(id) - who is subscribed
   - tag(id) - who this user subscribed to(tag)
+    - Get parameters:
+      - ?user(id) if ?user is null - returns current user's tags
 
 
 Delete user's tags
@@ -29,9 +31,19 @@ Delete user's tags
   
 
 Returns user's subscribtions
-- users/subscribe/?user={int}  - if ?user is null - returns current user's subscribtions
+- users/subscribe/ 
   - user(id) - who is subscribed
   - subscribe(id) - who this user subscribed to(user)
+    - Get parameters:
+      - ?user(id) if ?user is null - returns current user's subscribtions
 
 Delete user's subscribtion
 - users/tags/{subs_id} - id of subscribtion
+
+
+## Article
+Returns article
+- content/article
+    - Get parameters:
+      - ?tag(id) filtering by tag
+      - ?user(id) filtering by user

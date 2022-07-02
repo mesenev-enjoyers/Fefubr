@@ -1,5 +1,7 @@
+from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
 
+from content.likes import Like
 from users.models import CustomUser
 
 
@@ -16,8 +18,10 @@ class Article(models.Model):
     content = models.CharField(max_length=20000)
     date = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag)
-    rating = models.IntegerField(default=0, null=True, blank=True)
+    rating = models.IntegerField(default=0, blank=True)
     picture = models.ImageField(null=True, blank=True)
+    likes = GenericRelation(Like)
 
     def __str__(self):
         return self.name
+
