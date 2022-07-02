@@ -34,6 +34,7 @@ class TagsListView(generics.ListCreateAPIView):
 
 
 class TagsView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = TagSubscribtion.objects.all()
     serializer_class = TagSubscriptionSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
