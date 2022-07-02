@@ -25,3 +25,11 @@ class Article(models.Model):
     def __str__(self):
         return self.name
 
+
+class Comment(models.Model):
+    creator = models.ForeignKey(CustomUser, related_name='comment_creator', on_delete=models.CASCADE)
+    article = models.ForeignKey(Article, related_name='comment_article_name', on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    rating = models.IntegerField(default=0, blank=True)
+    likes = GenericRelation(Like)
+
