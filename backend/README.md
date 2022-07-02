@@ -24,7 +24,14 @@ Returns user's tags
   - tag(id) - who this user subscribed to(tag)
 
 
+Delete user's tags
+- users/tags/{subs_id} - id of tag subscribtion
+  
+
 Returns user's subscribtions
 - users/subscribe/?user={int}  - if ?user is null - returns current user's subscribtions
   - user(id) - who is subscribed
   - subscribe(id) - who this user subscribed to(user)
+
+Delete user's subscribtion
+- users/tags/{subs_id} - id of subscribtion
