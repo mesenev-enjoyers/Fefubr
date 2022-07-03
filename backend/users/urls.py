@@ -5,4 +5,6 @@ urlpatterns = [
     path('subscribe/<int:pk>', SubscribeView.as_view()),
     path('tag/', TagsListView.as_view()),
     path('tag/<int:pk>', TagsView.as_view()),
+    path('', UsersListView.as_view()),
+    path('<int:pk>', UsersView.as_view()),
 ]

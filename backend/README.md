@@ -14,8 +14,8 @@ Destroy Current token
 - auth/logout (POST) - add token in header
 
 ## Get users
-  - auth/users/ - all users
-  - auth/users/{id} - current user
+  - users - all users (id, username, rating)
+  - users/{id} - current user (id, username, rating)
 
 ## Subscriptions, Tags
 Returns user's tags
