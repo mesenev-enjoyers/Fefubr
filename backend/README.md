@@ -52,6 +52,7 @@ Returns articles
   - Get parameters:
     - ?tag(id) filtering by tag
     - ?user(id) filtering by user
+    - ?rating(id) if **True** sorting by rating
 
 Returns concrete article
 

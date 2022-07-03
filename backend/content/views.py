@@ -18,11 +18,14 @@ class ArticleListView(generics.ListCreateAPIView):
         query = Article.objects.all()
         tag = self.request.query_params.get('tag')  # гет параметры
         user = self.request.query_params.get('user')
+        rating = self.request.query_params.get('rating')
 
         if user is not None:
             query = query.filter(creator=user)
         if tag is not None:
             query = query.filter(tags=tag)
+        if rating is not None:
+            query = query.order_by('-rating')
         return query
 
 
