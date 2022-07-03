@@ -25,6 +25,9 @@ class Article(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering =['-rating']
+
 
 class Comment(models.Model):
     creator = models.ForeignKey(CustomUser, related_name='comment_creator', on_delete=models.CASCADE)

@@ -16,8 +16,9 @@ class ArticleListView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         query = Article.objects.all()
-        tag = self.request.query_params.get('tag') # гет параметры
+        tag = self.request.query_params.get('tag')  # гет параметры
         user = self.request.query_params.get('user')
+
         if user is not None:
             query = query.filter(creator=user)
         if tag is not None:
