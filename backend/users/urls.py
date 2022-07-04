@@ -7,4 +7,5 @@ urlpatterns = [
     path('tag/<int:pk>', TagsView.as_view()),
     path('', UsersListView.as_view()),
     path('<int:pk>', UsersView.as_view()),
+    path('current', CurrentUser.as_view()),
 ]

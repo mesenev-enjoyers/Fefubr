@@ -1,4 +1,7 @@
-from rest_framework import generics
+from rest_framework import generics, permissions
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from .serializers import *
 from .models_subscription import *
 from .permissions import IsOwnerOrReadOnly
@@ -54,6 +57,15 @@ class UsersListView(generics.ListAPIView):
 class UsersView(generics.RetrieveAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
+
+
+class CurrentUser(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
 
 
 
