@@ -1,13 +1,14 @@
 <template>
- <div class="#app">
-   <nav-bar></nav-bar>
+  <nav-bar></nav-bar>
+ <div class="app">
+   <router-view></router-view>
  </div>
 </template>
 
 <script>
 
 
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/UI/NavBar";
 export default {
   name: 'App',
   components: {
@@ -20,5 +21,6 @@ export default {
 *{
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 </style>
