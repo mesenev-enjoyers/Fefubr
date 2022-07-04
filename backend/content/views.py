@@ -1,5 +1,4 @@
-from rest_framework import generics, mixins
-
+from rest_framework import generics, mixins, permissions
 
 from .serializers import *
 from .models import *
@@ -7,12 +6,14 @@ from .likes import ContentAPIMixin
 
 
 class TagListView(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
 
 
 class ArticleListView(generics.ListCreateAPIView):
     serializer_class = ArticleSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         query = Article.objects.all()
@@ -36,6 +37,7 @@ class ArticleView(ContentAPIMixin):
 
 class CommentListView(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         query = Comment.objects.all()
