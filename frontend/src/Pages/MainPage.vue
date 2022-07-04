@@ -1,11 +1,18 @@
 <template>
  <div class="root">Hello, world</div>
-  likes: {{ $store.getters.doubleLikes}}
 </template>
 
 <script>
 export default {
-  name: "MainPage"
+  name: "MainPage",
+  data() {
+    return {
+      User: {
+        name: '',
+        rating: '',
+      }
+    }
+  },
 }
 </script>
 
