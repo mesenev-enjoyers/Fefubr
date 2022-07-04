@@ -2,7 +2,7 @@
   <div class="navbar">
     <div>Fefubr</div>
     <div class="navbar__btns">
-      <button @click="$router.push('/')" >Все статьи</button>
+      <button  @click="$router.push('/')" >Все статьи</button>
       <button @click="$router.push('/mynews')" >Моя лента</button>
       <button @click="$router.push('/chats')" >Общение</button>
       <button @click="$router.push('/createpost')" >Создать статью</button>

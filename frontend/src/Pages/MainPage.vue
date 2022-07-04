@@ -1,5 +1,6 @@
 <template>
  <div class="root">Hello, world</div>
+  likes: {{ $store.getters.doubleLikes}}
 </template>
 
 <script>
