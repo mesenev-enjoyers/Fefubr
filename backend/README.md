@@ -15,6 +15,8 @@ Destroy Current token
 
 ## Get users
   - users - all users (id, username, rating)
+    - Get parameters:
+      - ?top(int) -returns top users(sorted by rating)
   - users/{id} - current user (id, username, rating)
 
 ## Subscriptions, Tags

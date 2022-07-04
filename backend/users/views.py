@@ -40,13 +40,21 @@ class TagsView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class UsersListView(generics.ListAPIView):
-    queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
+
+    def get_queryset(self):
+        queryset = CustomUser.objects.all()
+        top = self.request.query_params.get('top')
+        if top is not None:
+            top = int(top)
+            queryset = queryset.filter('-rating')[:top]
+            return queryset
 
 
 class UsersView(generics.RetrieveAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
+
 
 
 
