@@ -1,4 +1,7 @@
-from rest_framework import generics
+from rest_framework import generics, permissions
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from .serializers import *
 from .models_subscription import *
 from .permissions import IsOwnerOrReadOnly
@@ -40,13 +43,30 @@ class TagsView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class UsersListView(generics.ListAPIView):
-    queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
+
+    def get_queryset(self):
+        queryset = CustomUser.objects.all()
+        top = self.request.query_params.get('top')
+        if top is not None:
+            top = int(top)
+            queryset = queryset[:top]
+        return queryset
 
 
 class UsersView(generics.RetrieveAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
+
+
+class CurrentUser(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
+
 
 
 

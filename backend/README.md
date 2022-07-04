@@ -14,8 +14,11 @@ Destroy Current token
 - auth/logout (POST) - add token in header
 
 ## Get users
-  - users - all users (id, username, rating)
-  - users/{id} - current user (id, username, rating)
+  - users - all users (id, username, rating, avatar)
+    - Get parameters:
+      - ?top(int) -returns top users(sorted by rating)
+  - users/{id} -  user by id (id, username, rating, avatar)
+  - users/current - current authorized user
 
 ## Subscriptions, Tags
 Returns user's tags

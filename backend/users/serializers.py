@@ -18,4 +18,4 @@ class TagSubscriptionSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['id', 'username', 'rating']
+        fields = ['id', 'username', 'rating', 'avatar']
