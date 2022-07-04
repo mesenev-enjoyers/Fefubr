@@ -47,8 +47,8 @@ class UsersListView(generics.ListAPIView):
         top = self.request.query_params.get('top')
         if top is not None:
             top = int(top)
-            queryset = queryset.filter('-rating')[:top]
-            return queryset
+            queryset = queryset[:top]
+        return queryset
 
 
 class UsersView(generics.RetrieveAPIView):
