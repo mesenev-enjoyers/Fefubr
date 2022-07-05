@@ -66,6 +66,8 @@ export default {
   width: 70%;
   text-align: center;
   border: 1px solid black;
+  box-shadow: -1px -1px 5px gray, 1px 1px 5px gray;
+  background: white;
 }
 .sideBar {
   width: 30%;
