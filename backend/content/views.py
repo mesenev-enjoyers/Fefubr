@@ -37,7 +37,7 @@ class TagListView(generics.ListCreateAPIView):
     queryset = Tag.objects.all()
 
 
-class TagView(generics.RetrieveUpdateDestroyAPIView):
+class TagView(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
