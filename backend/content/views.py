@@ -10,7 +10,7 @@ from .likes import ContentAPIMixin
 
 class ArticleListView(generics.ListCreateAPIView):
     serializer_class = ArticleSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
 
     def get_queryset(self):
         query = Article.objects.all()
