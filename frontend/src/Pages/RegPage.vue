@@ -5,7 +5,7 @@
   <header-log-page></header-log-page>
 
   <div class="container container-1 d-flex justify-content-center rounded">
-    <form class="frm" action="" @submit.prevent="authorize">
+    <form class="frm" action="" @submit.prevent="createUser">
       <div class="row justify-content-center ">
         <p class="p-header ">Регистрация</p>
       </div>
@@ -28,7 +28,7 @@
       <div class="row">
         <input
             class="form-control inp"
-            type="password"
+            type="email"
             placeholder="Введите ваш e-mail"
             v-model="mail"
         >
