@@ -1,11 +1,18 @@
 <template>
   <nav-bar></nav-bar>
-  <h1 v-if="isPostsLoading" style="text-align: center; margin-top: 20%">Идёт загрузка...</h1>
-  <div v-else>
-  <div v-if="posts.length > 0">
-  <post-list :posts="posts"/>
-  </div>
-  <h1 v-else style="text-align: center; margin-top: 20%">Постов нет :(</h1>
+  <div class="content">
+    <div class="mainContent">
+      <h1 v-if="isPostsLoading" style="text-align: center; margin-top: 20%">Идёт загрузка...</h1>
+      <div v-else>
+        <div v-if="posts.length > 0">
+           <post-list :posts="posts"/>
+        </div>
+        <h1 v-else style="text-align: center; margin-top: 20%">Постов нет :(</h1>
+      </div>
+    </div>
+    <div class="sideBar">
+      <top-users></top-users>
+    </div>
   </div>
 </template>
 
@@ -52,5 +59,15 @@ export default {
 </script>
 
 <style scoped>
-
+.content {
+  display: flex;
+}
+.mainContent {
+  width: 70%;
+  text-align: center;
+  border: 1px solid black;
+}
+.sideBar {
+  width: 30%;
+}
 </style>
