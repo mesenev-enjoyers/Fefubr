@@ -1,18 +1,12 @@
 <template>
   <nav-bar></nav-bar>
-  <div class="content">
-    <div class="mainContent">
-      <div class="barForSort">
-        <div>Теги:</div>
-        <div><button>Сортировать по времени</button></div>
-        <div><button>Сортировать по рейтингу</button></div>
-      </div>
-      <div class="posts"><post-list :posts="[]"/>ЧТо-то будет</div>
-    </div>
-    <div class="sideBar">
-      <top-users/></div>
+  <h1 v-if="isPostsLoading" style="text-align: center; margin-top: 20%">Идёт загрузка...</h1>
+  <div v-else>
+  <div v-if="posts.length > 0">
+  <post-list :posts="posts"/>
   </div>
-
+  <h1 v-else style="text-align: center; margin-top: 20%">Постов нет :(</h1>
+  </div>
 </template>
 
 <script>
@@ -34,41 +28,29 @@ export default {
         name: '',
         rating: '',
       },
-      Posts: []
+      posts: [],
+      isPostsLoading: false,
     }
   },
+  methods: {
+    async fetchPosts() {
+      axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
+      this.isPostsLoading = true
+      const response = await axios.get('http://fefubr.tk/api/content/article')
+      this.posts = response.data
+      this.isPostsLoading = false
+    },
 
-  beforeMount() {
-        if (this.isAuthorized) {
-          axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
-          axios.get('http://fefubr.tk/api/users/current').then((res) =>
-              (this.User.name = res.data.username, this.User.rating = res.data.rating))
-              .then((err) => (console.log(err)))
-        }
-      },
+  },
+
+  mounted() {
+    this.fetchPosts()
+  }
 
 
 }
 </script>
 
 <style scoped>
-.content {
-  display: flex;
-  max-height: 100%;
-}
-.barForSort {
-  display: flex;
-  border: 1px solid black;
-  height: 10%;
-  justify-content: space-between;
-  align-content: center;
-}
-.mainContent {
-  width: 70%;
-  border: 1px solid black;
-}
-.sideBar {
-  width: 30%;
-  border: 1px solid black;
-}
+
 </style>
