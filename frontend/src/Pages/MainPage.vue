@@ -10,7 +10,7 @@ import NavBar from "@/components/UI/NavBar";
 export default {
   components: {
     NavBar,
-    PostList
+    PostList,
   },
   name: "MainPage",
   data() {

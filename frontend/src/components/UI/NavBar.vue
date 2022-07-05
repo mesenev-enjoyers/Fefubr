@@ -38,12 +38,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
-*{
-  padding: 0;
-  margin: 0;
-}
+/**{*/
+/*  padding: 0;*/
+/*  margin: 0;*/
+/*}*/
 
 .logo-div{
   padding-top: 10px;
