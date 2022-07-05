@@ -6,6 +6,7 @@ import CreateUserPost from "@/Pages/CreateUserPost";
 import LoginPage from "@/Pages/LoginPage";
 import PostPage from "@/Pages/PostPage";
 import RegPage from "@/Pages/RegPage";
+import LogoutPage from "@/Pages/LogoutPage";
 
 
 const isAuthorized = localStorage.getItem('token') !== null;
@@ -22,7 +23,8 @@ const routes = [
     {path: '/createpost', component: CreateUserPost, beforeEnter: authGuard},
     {path: '/login', component: LoginPage, name: 'LoginPage'},
     {path: '/post/:id', component: PostPage},
-    {path: '/register', component: RegPage}
+    {path: '/register', component: RegPage},
+    {path: '/logout', component: LogoutPage}
 ]
 const router = createRouter({
     routes,

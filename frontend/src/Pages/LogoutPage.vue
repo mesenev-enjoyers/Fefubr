@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "LogoutPage",
   data() {
@@ -14,8 +16,9 @@ export default {
     logout() {
       this.token = localStorage.getItem('token')
       localStorage.removeItem('token')
-
-
+      axios.post("http://fefubr.tk/api/auth/logout",{headers: {Authorization: `Token ${this.token}`}})
+      this.token = ''
+      this.$router.push('/')
     }
   }
 }
