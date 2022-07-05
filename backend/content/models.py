@@ -26,7 +26,7 @@ class Article(models.Model):
         return self.name
 
     class Meta:
-        ordering =['date', '-rating']
+        ordering =['-date', '-rating']
 
 
 class Comment(models.Model):
