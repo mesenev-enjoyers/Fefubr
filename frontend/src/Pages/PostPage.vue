@@ -1,5 +1,7 @@
 <template>
+  <nav-bar></nav-bar>
  <div class="root">
+
    <h1>Страница с постами</h1>
    <h1>{{ $store.state.likes }}</h1>
    <div>
@@ -10,8 +12,10 @@
 </template>
 
 <script>
+import NavBar from "@/components/UI/NavBar";
 export default {
-  name: "PostPage"
+  name: "PostPage",
+  components: {NavBar}
 }
 </script>
 

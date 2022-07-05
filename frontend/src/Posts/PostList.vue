@@ -1,12 +1,16 @@
 <template>
-  <div class="post" v-for="post in posts" :key="post.id">
-  {{post.name}}
-  </div>
+  <post-item class = "post"
+             v-for="post in posts"
+             :post = "post"
+             :key = "post.id"
+  />
 </template>
 
 <script>
+import PostItem from "@/Posts/PostItem";
 export default {
   name: "PostList",
+  components: {PostItem},
   props: {
     posts: {
       type: Array,

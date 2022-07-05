@@ -1,12 +1,15 @@
 <template>
+  <nav-bar></nav-bar>
   <post-list :posts="[]"/>
 </template>
 
 <script>
 import axios from "axios";
 import PostList from "@/Posts/PostList";
+import NavBar from "@/components/UI/NavBar";
 export default {
   components: {
+    NavBar,
     PostList
   },
   name: "MainPage",
