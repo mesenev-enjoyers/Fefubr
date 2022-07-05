@@ -15,14 +15,17 @@
         </div>
         <div class="main-div col-6">
           <button class="btn block" @click="$router.push('/')" >Все статьи</button>
-          <button class="btn block" @click="$router.push('/mynews')" >Моя лента</button>
-          <button class="btn block" @click="$router.push('/chats')" >Общение</button>
+          <button class="btn block" v-if="isAuthorized" @click="$router.push('/mynews')">Моя лента</button>
+          <button class="btn block" v-else @click="$router.push('/login')">Моя лента</button>
+          <button class="btn block" v-if="isAuthorized" @click="$router.push('/chats')" >Общение</button>
+          <button class="btn block" v-else @click="$router.push('/login')" >Общение</button>
         </div>
         <div class="second-div col-3">
           <button class="svg block" @click="$router.push('/createpost')" >
             <img src="@/assets/write.png" alt="">
           </button>
-          <button class="btn block" @click="$router.push('/login')" >Вход</button>
+          <button class="btn block" v-if="!isAuthorized" @click="$router.push('/login')" >Вход</button>
+          <button class="btn block" v-else @click="logout" >Выйти</button>
         </div>
       </div>
     </div>
@@ -31,9 +34,24 @@
 
 
 <script>
+import axios from "axios";
+
 export default {
   name: "NavBar",
+  data() {
+    return {
+      isAuthorized: localStorage.getItem('token') != null,
+      token: localStorage.getItem('token')
+    }
+  },
   methods: {
+    logout() {
+      this.token = localStorage.getItem('token')
+      localStorage.removeItem('token')
+      axios.post("http://fefubr.tk/api/auth/logout",{headers: {Authorization: `Token ${this.token}`}})
+      this.token = ''
+      this.$router.push('/')
+    }
   }
 }
 </script>
@@ -69,7 +87,7 @@ export default {
 
 .bg{
   height: 82px;
-  box-shadow: 0px 4px 4px gray;
+  box-shadow: 0 4px 4px gray;
   margin: 0;
 }
 
@@ -94,8 +112,8 @@ button{
   line-height: 31px;
   color: black;
   text-decoration: none;
-  text-decoration-thickness: 0px;
-  text-underline-offset: 0px;
+  text-decoration-thickness: 0;
+  text-underline-offset: 0;
 
   transition-duration: 0.2s;
   transition-property: text-decoration-thickness, color, text-underline-offset, text-decoration;

@@ -1,9 +1,9 @@
 <template>
   <div class="root">
-    <h2><p>Топ пользователей</p></h2>
+    <h2>Топ пользователей</h2>
     <div  v-for="user in TopUsers" :key="user.id">
       <div class="user">
-        <img :src="user.avatar" > {{user.username}} {{user.rating}}
+        <img :src="user.avatar"> {{user.username}} {{user.rating}}
       </div>
     </div>
   </div>

@@ -44,7 +44,7 @@
 
   <div class="container container-2 d-flex justify-content-center rounded">
     <div class="link-div row justify-content-center ">
-      <p class="p-link">Еще нет аккаунта? <a class="link" href="#">Зарегистрируйтесь</a></p>
+      <p class="p-link">Еще нет аккаунта? <a class="link" @click="$router.push('/register')">Зарегистрируйтесь</a></p>
     </div>  </div>
 </template>
 
