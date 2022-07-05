@@ -44,12 +44,13 @@ export default {
   },
   methods: {
     createPost() {
-      console.log(this.tags)
       const formData = new FormData();
       formData.append('creator', this.currentUser);
       formData.append('name', this.name);
       formData.append('content', this.content);
-      formData.append('tags', this.tags);
+      for (let i = 0; i < this.tags.length; ++i) {
+        formData.append('tags', this.tags[i])
+      }
       formData.append('picture', this.file);
       axios.post('http://fefubr.tk/api/content/article', formData, {
          headers: {
@@ -57,8 +58,13 @@ export default {
          }
       }).then(() => {
         this.$router.push('/')
-      }).catch(function () {
-        console.log("error"); // FIXME
+      }).catch(() => {
+        if (this.tags.length < 1) {
+          alert("Выберете хотя бы один тег")
+        }
+        else {
+          alert("Вы выбрали слишком большой файл, пожалуйста пощадите наш сервер((") //FIXME спросить Месенева
+        }
       })
     },
     handleFileUpload() {
@@ -69,7 +75,7 @@ export default {
       axios.get('http://fefubr.tk/api/users/current').then((res) =>{
         this.currentUser = res.data.id
       })
-    }
+    },
   },
   mounted() {
     axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
