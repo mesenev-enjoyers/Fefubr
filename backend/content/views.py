@@ -1,5 +1,6 @@
 from rest_framework import generics, mixins, permissions
 
+from users.models_subscription import UserSubscribtion, TagSubscribtion
 from .serializers import *
 from .models import *
 from .likes import ContentAPIMixin
@@ -58,5 +59,30 @@ class CommentListView(generics.ListCreateAPIView):
 class CommentView(ContentAPIMixin):
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
+
+
+class MyArticleView(generics.ListCreateAPIView):
+    serializer_class = ArticleSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        subs = UserSubscribtion.objects.filter(user=user)
+        subs_id = []
+        for i in subs:
+            subs_id.append(i.subscribe.id)
+
+        tags = TagSubscribtion.objects.filter(user=user)
+        tags_id = []
+        for i in tags:
+            tags_id.append(i.tag_subscribe_id)
+
+        query = Article.objects.filter(tags__in=tags_id) | Article.objects.filter(creator_id__in=subs_id)
+
+        rating = self.request.query_params.get('rating')
+        if rating is not None:
+            query = query.order_by('-rating')
+
+        return query
 
 

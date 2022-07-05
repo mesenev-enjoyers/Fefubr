@@ -65,6 +65,13 @@ Returns concrete article
     - ?unlike=True - removes like
 
 
+Returns "Моя лента" (не смог придумать адекватное название
+                     на английском :D)
+- content/article/my
+  - Get parameters:
+    - ?rating | if **True** sorting by rating
+
+
 ## Comment
 - content/comment  (GET,POST)
   - creator(id)
