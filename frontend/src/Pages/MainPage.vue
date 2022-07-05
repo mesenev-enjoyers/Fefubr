@@ -1,6 +1,12 @@
 <template>
   <nav-bar></nav-bar>
-  <post-list :posts="[]"/>
+  <h1 v-if="isPostsLoading" style="text-align: center; margin-top: 20%">Идёт загрузка...</h1>
+  <div v-else>
+  <div v-if="posts.length > 0">
+  <post-list :posts="posts"/>
+  </div>
+  <h1 v-else style="text-align: center; margin-top: 20%">Постов нет :(</h1>
+  </div>
 </template>
 
 <script>
@@ -20,18 +26,24 @@ export default {
         name: '',
         rating: '',
       },
-      Posts: []
+      posts: [],
+      isPostsLoading: false,
     }
   },
+  methods: {
+    async fetchPosts() {
+      axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
+      this.isPostsLoading = true
+      const response = await axios.get('http://fefubr.tk/api/content/article')
+      this.posts = response.data
+      this.isPostsLoading = false
+    },
 
-  beforeMount() {
-        if (this.isAuthorized) {
-          axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
-          axios.get('http://fefubr.tk/api/users/current').then((res) =>
-              (this.User.name = res.data.username, this.User.rating = res.data.rating))
-              .then((err) => (console.log(err)))
-        }
-      },
+  },
+
+  mounted() {
+    this.fetchPosts()
+  }
 
 
 }
