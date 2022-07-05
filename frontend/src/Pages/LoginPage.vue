@@ -36,7 +36,7 @@ export default {
       }).then((response) => {
         localStorage.setItem('token', response.data.auth_token);
         axios.defaults.headers.common['Authorization'] = `Token ${response.data.auth_token}`
-        // this.$router.push('/')
+        this.$router.push('/')
       }).catch(function () {
         console.log("error"); // FIXME
       })

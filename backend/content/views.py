@@ -5,15 +5,11 @@ from .models import *
 from .likes import ContentAPIMixin
 
 
-class TagListView(generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
-    serializer_class = TagSerializer
-    queryset = Tag.objects.all()
 
 
 class ArticleListView(generics.ListCreateAPIView):
     serializer_class = ArticleSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         query = Article.objects.all()
@@ -35,9 +31,21 @@ class ArticleView(ContentAPIMixin):
     queryset = Article.objects.all()
 
 
+class TagListView(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    serializer_class = TagSerializer
+    queryset = Tag.objects.all()
+
+
+class TagView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    serializer_class = TagSerializer
+    queryset = Tag.objects.all()
+
+
 class CommentListView(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         query = Comment.objects.all()
