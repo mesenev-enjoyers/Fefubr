@@ -7,7 +7,7 @@
     <div class = "img" v-if="post.picture != null"><img :src="post.img"></div> <!-- FIXME -->
     <div class = "creator">{{post.creator}}</div>
     <div class = "tags">
-      <div v-for = "tag in post.tags">{{tag.name}}</div>
+      <div v-for = "tag in post.tags" :key="tag.id">{{tag.name}}</div>
     </div>
   </div>
 </template>
