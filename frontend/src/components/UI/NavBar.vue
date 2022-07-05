@@ -20,10 +20,14 @@
         </div>
         <div class="second-div col-3">
           <button class="svg block" @click="$router.push('/createpost')" >
+<<<<<<< HEAD
             <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" >
               <path d="M21.0835 7.66669H7.66683C6.65017 7.66669 5.67514 8.07055 4.95625 8.78944C4.23736 9.50833 3.8335 10.4834 3.8335 11.5V38.3334C3.8335 39.35 4.23736 40.325 4.95625 41.0439C5.67514 41.7628 6.65017 42.1667 7.66683 42.1667H34.5002C35.5168 42.1667 36.4918 41.7628 37.2107 41.0439C37.9296 40.325 38.3335 39.35 38.3335 38.3334V24.9167" stroke="#5F77BF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M35.4585 4.79169C36.221 4.0292 37.2552 3.60083 38.3335 3.60083C39.4118 3.60083 40.446 4.0292 41.2085 4.79169C41.971 5.55419 42.3994 6.58836 42.3994 7.66669C42.3994 8.74503 41.971 9.7792 41.2085 10.5417L23.0002 28.75L15.3335 30.6667L17.2502 23L35.4585 4.79169Z" stroke="#5F77BF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
+=======
+            <img src="@/assets/write.png" alt="">
+>>>>>>> d47b801a5a87a5c740415c17aebac3c4c527854a
           </button>
           <button class="btn block" @click="$router.push('/login')" >Вход</button>
         </div>
@@ -66,8 +70,8 @@ export default {
   padding-top: 20px;
 }
 
-.second-div svg {
-  padding-right: 151px;
+.second-div img {
+  padding-right: 100px;
 }
 
 .bg{
@@ -110,6 +114,7 @@ button{
   text-decoration-thickness: 4px;
   text-underline-offset: 9px;
 }
+
 /*дизайн кнопок + эффект*/
 
 .logo{
