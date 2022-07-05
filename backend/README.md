@@ -18,7 +18,7 @@ Destroy Current token
     - Get parameters:
       - ?top(int) -returns top users(sorted by rating)
   - users/{id} -  user by id (id, username, rating, avatar)
-  - users/current - current authorized user
+  - users/current - current authorized user  (GET, PATCH)
 
 ## Subscriptions, Tags
 Returns user's tags
