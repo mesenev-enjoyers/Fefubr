@@ -1,13 +1,14 @@
 <template>
- <div class="root" v-if="isAuthorized">Hello, {{User.name}}</div>
-  <div v-else>Not Logined :(</div>
-
+  <post-list :posts="[]"/>
 </template>
 
 <script>
 import axios from "axios";
-
+import PostList from "@/Posts/PostList";
 export default {
+  components: {
+    PostList
+  },
   name: "MainPage",
   data() {
     return {
@@ -15,7 +16,8 @@ export default {
       User: {
         name: '',
         rating: '',
-      }
+      },
+      Posts: []
     }
   },
 
@@ -30,10 +32,6 @@ export default {
 
 
 }
-
-
-
-
 </script>
 
 <style scoped>
