@@ -7,5 +7,6 @@ urlpatterns = [
     path('article/<int:pk>', ArticleView.as_view()),
     path('comment', CommentListView.as_view()),
     path('comment/<int:pk>', CommentView.as_view()),
+    path('article/my', MyArticleView.as_view())
 
 ]
