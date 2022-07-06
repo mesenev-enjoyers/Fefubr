@@ -8,7 +8,7 @@ import PostPage from "@/Pages/PostPage";
 import RegPage from "@/Pages/RegPage";
 
 
-const isAuthorized = localStorage.getItem('token') !== null;
+const isAuthorized = localStorage.getItem('token') != null;
 
 const authGuard = function (to, from, next) {
     if (!isAuthorized) next({name: 'LoginPage'});

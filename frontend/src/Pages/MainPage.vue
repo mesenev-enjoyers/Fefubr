@@ -63,7 +63,10 @@ export default {
   },
   methods: {
     async fetchPosts() {
-      axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
+      if (this.isAuthorized)
+        axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
+      else
+        console.log("I'm not authorized!")
       this.isPostsLoading = true
       const response = await axios.get('http://fefubr.tk/api/content/article')
       this.posts = response.data
