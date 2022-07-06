@@ -10,6 +10,11 @@ class UserSubscriptionSerializer(serializers.ModelSerializer):
 
 
 class TagSubscriptionSerializer(serializers.ModelSerializer):
+    tag_name = serializers.SerializerMethodField()
+
+    def get_tag_name(self, obj):
+        return Tag.objects.get(subscribe_tag=obj.id).name
+
     class Meta:
         model = TagSubscribtion
         fields = '__all__'
