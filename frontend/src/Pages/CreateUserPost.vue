@@ -81,8 +81,6 @@ export default {
     const isAuthorized = localStorage.getItem('token') != null;
     if (isAuthorized)
     axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
-    else
-      alert("Вы не вошли!!")
 
     axios.get('http://fefubr.tk/api/content/tag').then((res) => {
       this.userTags = res.data

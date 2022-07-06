@@ -11,7 +11,7 @@
     <div class="container">
       <div class="navbar__btns row">
         <div class="logo-div col-2">
-          <p class="logo block">Fefubr </p>
+          <p class="logo block">Fefubr</p>
         </div>
         <div class="logo-div col-2">
           <p class="account block">Аккаунт</p>

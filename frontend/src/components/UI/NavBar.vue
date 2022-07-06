@@ -21,7 +21,10 @@
           <button class="btn block" v-else @click="$router.push('/login')" >Общение</button>
         </div>
         <div class="second-div col-3">
-          <button class="svg block" @click="$router.push('/createpost')" >
+          <button class="svg block" v-if="isAuthorized" @click="$router.push('/createpost')">
+            <img src="@/assets/write.png" alt="">
+          </button>
+          <button class="svg block" v-else @click="$router.push('/login')">
             <img src="@/assets/write.png" alt="">
           </button>
           <button class="btn block" v-if="!isAuthorized" @click="$router.push('/login')" >Вход</button>
@@ -50,7 +53,6 @@ export default {
       localStorage.removeItem('token')
       axios.post("http://fefubr.tk/api/auth/token/logout",{headers: {Authorization: `Token ${this.token}`}})
       this.token = ''
-      console.log("Я вышел!")
       this.$router.go(0)
     }
   }

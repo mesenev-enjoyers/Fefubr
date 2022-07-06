@@ -8,18 +8,18 @@ import PostPage from "@/Pages/PostPage";
 import RegPage from "@/Pages/RegPage";
 
 
-const isAuthorized = localStorage.getItem('token') != null;
-
-const authGuard = function (to, from, next) {
-    if (!isAuthorized) next({name: 'LoginPage'});
-    else next()
-}
+// const isAuthorized = localStorage.getItem('token') !== null;
+//
+// const authGuard = function (to, from, next) {
+//     if (!isAuthorized) next({name: 'LoginPage'});
+//     else next()
+// }
 
 const routes = [
     {path: '/', component: MainPage, name: 'MainPage'},
-    {path: '/mynews', component: UserNews, beforeEnter: authGuard},
-    {path: '/chats', component: UserChats, beforeEnter: authGuard},
-    {path: '/createpost', component: CreateUserPost, beforeEnter: authGuard},
+    {path: '/mynews', component: UserNews},
+    {path: '/chats', component: UserChats},
+    {path: '/createpost', component: CreateUserPost},
     {path: '/login', component: LoginPage, name: 'LoginPage'},
     {path: '/post/:id', component: PostPage},
     {path: '/register', component: RegPage},
