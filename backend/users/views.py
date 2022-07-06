@@ -54,7 +54,7 @@ class UsersListView(generics.ListAPIView):
         return queryset
 
 
-class UsersView(generics.RetrieveAPIView):
+class UsersView(generics.RetrieveUpdateDestroyAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
 
@@ -68,6 +68,13 @@ class CurrentUser(APIView):
         return Response(serializer.data)
 
     def patch(self, request):
+        user = request.user
+        serializer = UserSerializer(user, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.validated_data)
+
+    def post(self, request):
         user = request.user
         serializer = UserSerializer(user, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
