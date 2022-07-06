@@ -57,7 +57,7 @@ export default {
     axios.get(`http://fefubr.tk/api/users/${this.post.creator}`).then((res) => {this.creatorName = res.data.username,
     this.creatorAvatar = res.data.avatar})
     for(let i = 0; i < this.post.tags.length; ++i)
-    axios.get(`http://fefubr.tk/api/content/tag/${this.post.tags[i]}`).then((res) =>{
+      axios.get(`http://fefubr.tk/api/content/tag/${this.post.tags[i]}`).then((res) =>{
     this.tags.push({id: this.post.tags[i], name: res.data.name})
   })
   }
