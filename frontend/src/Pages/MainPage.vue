@@ -169,7 +169,7 @@ export default {
   margin: 0;
   padding: 0;
   box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
-  height: 500px;
+  height: 800px;
   position: sticky;
   top: 82px
   /*background-color: aqua;*/

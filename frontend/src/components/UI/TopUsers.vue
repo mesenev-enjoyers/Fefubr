@@ -2,8 +2,11 @@
   <div class="root">
     <h2>Топ пользователей</h2>
     <div  v-for="user in TopUsers" :key="user.id">
-      <div class="user">
-        <img :src="user.avatar"> {{user.username}} {{user.rating}}
+      <div class="user d-inline-flex p-2">
+        <img :src="user.avatar">
+        <div class="name-rate">
+        {{user.username}} {{user.rating}}
+        </div>
       </div>
     </div>
   </div>
@@ -33,13 +36,13 @@ export default {
   text-align: center;
 }
 .user {
-  display: block;
   padding: 15px;
   font-size: 22px;
-  margin: auto;
 }
 .user img {
-  width: 10%;
-
+  width: 20%;
+}
+.name-rate{
+  margin: 12px 0 0 12px;
 }
 </style>
