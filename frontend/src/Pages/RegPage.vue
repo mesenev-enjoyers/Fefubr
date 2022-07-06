@@ -69,7 +69,7 @@
 
   <div class="container container-2 d-flex justify-content-center rounded">
     <div class="link-div row justify-content-center ">
-      <p class="p-link">Уже есть аккаунт? <a class="link" href="#">Войдите</a></p>
+      <p class="p-link">Уже есть аккаунт? <a class="link" @click="$router.push('/login')">Войдите</a></p>
     </div>  </div>
 </template>
 
@@ -106,7 +106,6 @@ export default {
           localStorage.setItem('token', response.data.auth_token);
           axios.defaults.headers.common['Authorization'] = `Token ${response.data.auth_token}`
           this.$router.push('/')
-          console.log(response)
         })
       }).catch(function () {
         console.log("error"); // FIXME
