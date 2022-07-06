@@ -35,9 +35,18 @@ export default {
   margin-top: 15px;
   text-align: center;
 }
+h2{
+  font-family: 'Inter';
+
+
+}
 .user {
   padding: 15px;
-  font-size: 22px;
+  margin: 12px 0 0 12px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
 }
 .user img {
   width: 20%;

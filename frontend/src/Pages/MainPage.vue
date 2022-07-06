@@ -16,6 +16,10 @@
 <!--    </div>-->
 <!--  </div>-->
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+
   <nav-bar></nav-bar>
   <div class="container">
     <div class="row mainDiv ">
@@ -131,6 +135,7 @@ export default {
 .btn{
   width: 200px;
   height: 40px;
+  padding: 2px 5px 5px 5px;
   margin-right: 20px;
   color: black;
   background-color:white;
