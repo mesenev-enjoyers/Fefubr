@@ -1,12 +1,18 @@
 <template>
   <div class="container">
-    <div class="creator">
-      <img :src="creatorAvatar" alt=""> {{creatorName}} {{post.date.substring(0,10)}}
+    <div class="creator d-inline-flex">
+      <img :src="creatorAvatar" alt="">
+      <div class="creator-name">
+        {{creatorName}}
+      </div>
+      <div class="creator-date">
+        {{post.date.substring(0,10)}}
+      </div>
     </div>
     <div class="content">
       <div class="title">{{post.name}}</div>
       <div class = "img" v-if="post.picture != null"><img :src="post.picture"></div>
-      <div class="mainContent" >{{post.content}}</div>
+      <div class="main-content" >{{post.content}}</div>
       <div class = "tags">
         <h6>Теги:</h6>
         <div v-for = "tag in tags" :key="tag.id">{{tag.name}} </div>
@@ -67,22 +73,56 @@ export default {
 
 <style scoped>
 
+.container {
+  padding: 10px;
+}
+
 img{
   max-width: 760px;
   max-height: 700px;
-}
-.container {
-  margin-top: 15px;
-  padding: 10px;
-}
-.creator {
-  display: flex;
+  margin-bottom: 22px;
 }
 .creator img {
-  max-height: 25px;
-  max-width: 25px;
+  max-height: 35px;
+  max-width: 35px;
+  margin-right: 10px;
 }
-.tags {
-  display: flex;
+.creator-name{
+  margin-top: 5px;
+  margin-right: 10px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
 }
+
+.creator-date{
+  margin-top: 5px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  color: #767676;
+}
+
+.title{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+  margin-top: 22px;
+  margin-bottom: 22px;
+
+}
+
+.main-content{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+}
+
 </style>
