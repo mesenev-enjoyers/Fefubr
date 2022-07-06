@@ -16,9 +16,6 @@
 <!--    </div>-->
 <!--  </div>-->
 
-
-
-
   <nav-bar></nav-bar>
   <div class="container">
     <div class="row mainDiv ">
