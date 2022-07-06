@@ -144,6 +144,7 @@ export default {
 
 .link{
   width: auto;
+  cursor: pointer;
   font-family: 'Inter',serif;
   font-style: normal;
   font-weight: normal;

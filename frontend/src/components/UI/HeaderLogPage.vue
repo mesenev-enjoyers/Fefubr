@@ -31,10 +31,15 @@ export default {
 </script>
 
 <style>
+
 .bg{
   height: 82px;
   box-shadow: 0px 4px 4px gray;
   margin: 0;
+}
+.container{
+  padding: 0;
+
 }
 .navbar__btns {
   height: 82px;
@@ -43,13 +48,9 @@ export default {
 }
 
 .logo-div{
-  padding-top: 10px;
-  padding-bottom: 10px;
-  pointer-events: none;
-}
+  padding: 10px 0 10px 0;
 
-.main-div{
-  padding-top: 23px;
+  pointer-events: none;
 }
 
 .main-div button{

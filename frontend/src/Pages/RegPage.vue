@@ -58,8 +58,6 @@
         >
       </div>
 
-
-
       <div class="btn-div row justify-content-center">
         <button class="btn btn-primary">Зарегистрироваться</button>
       </div>
@@ -69,7 +67,7 @@
 
   <div class="container container-2 d-flex justify-content-center rounded">
     <div class="link-div row justify-content-center ">
-      <p class="p-link">Уже есть аккаунт? <a class="link" href="#">Войдите</a></p>
+      <p class="p-link">Уже есть аккаунт? <a class="link" @click="$router.push('/login')">Войдите</a></p>
     </div>  </div>
 </template>
 
@@ -180,6 +178,7 @@ export default {
 
 .link{
   width: auto;
+  cursor: pointer;
   font-family: 'Inter',serif;
   font-style: normal;
   font-weight: normal;
