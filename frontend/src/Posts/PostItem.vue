@@ -66,6 +66,11 @@ export default {
 </script>
 
 <style scoped>
+
+img{
+  max-width: 860px;
+  max-height: 800px;
+}
 .container {
   margin-top: 15px;
   padding: 10px;

@@ -1,7 +1,7 @@
 <template>
 <!--  <nav-bar></nav-bar>-->
 
-  <!--  <div class="content">-->
+<!--    <div class="content">-->
 <!--    <div class="mainContent">-->
 <!--      <h1 v-if="isPostsLoading" style="text-align: center; margin-top: 20%">Идёт загрузка...</h1>-->
 <!--      <div v-else>-->
@@ -27,12 +27,13 @@
           <div class="row uprow-first-content  rounded-1">
             <p>dddd</p>
           </div>
-          <div class="row downrow-first-content  rounded-1">
-            <p>22222</p>
+          <div class="row downrow-first-content  rounded-1"  v-for="post in posts"  :key = "post.id">
+            <post-item  :post = "post"/>
           </div>
         </div>
       </div>
       <div class="col-3 div-second-content rounded-1">
+              <top-users></top-users>
       </div>
     </div>
   </div>
@@ -42,10 +43,12 @@
 import axios from "axios";
 // import PostList from "@/Posts/PostList";
 import NavBar from "@/components/UI/NavBar";
-// import TopUsers from "@/components/UI/TopUsers";
+import TopUsers from "@/components/UI/TopUsers";
+import PostItem from "@/Posts/PostItem";
 export default {
   components: {
-    // TopUsers,
+    PostItem,
+    TopUsers,
     NavBar,
     // PostList,
   },
@@ -110,9 +113,8 @@ export default {
   margin: 25px 0 0 0;
   padding: 0;
   width: 97%;
-
   box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
-  height: 200px;
+  height: auto;
   background-color: forestgreen;
 
 }
@@ -127,6 +129,9 @@ export default {
   top: 82px
 }
 
+/*......................*/
+
+
 /*.content {*/
 /*  display: flex;*/
 /*}*/
@@ -140,7 +145,6 @@ export default {
 /*  width: 30%;*/
 /*}*/
 
-/*......................*/
 
 
 
