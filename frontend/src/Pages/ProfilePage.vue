@@ -1,4 +1,5 @@
 <template>
+  <nav-bar></nav-bar>
   <div class="root">
     <img :src="user.avatar">
     <form @submit="changeAvatar">
@@ -11,8 +12,10 @@
 
 <script>
 import axios from "axios";
+import NavBar from "@/components/UI/NavBar";
 export default {
   name: "ProfilePage",
+  components: {NavBar},
   data() {
     return {
       user: {

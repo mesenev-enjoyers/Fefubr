@@ -1,4 +1,5 @@
 <template>
+  <nav-bar></nav-bar>
   <div class="root">
 
   </div>
@@ -6,9 +7,12 @@
 
 <script>
 import axios from "axios";
+import NavBar from "@/components/UI/NavBar";
 
 export default {
   name: "UserPage",
+  components: {NavBar},
+
   data() {
     return {
       user: {},
