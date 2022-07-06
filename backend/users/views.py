@@ -74,6 +74,13 @@ class CurrentUser(APIView):
         serializer.save()
         return Response(serializer.validated_data)
 
+    def post(self, request):
+        user = request.user
+        serializer = UserSerializer(user, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.validated_data)
+
 
 
 
