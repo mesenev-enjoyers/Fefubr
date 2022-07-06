@@ -9,7 +9,7 @@ from .permissions import IsOwnerOrReadOnly
 
 class SubscribeListView(generics.ListCreateAPIView):
     serializer_class = UserSubscriptionSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    #permission_classes = [IsOwnerOrReadOnly]
 
     def get_queryset(self):
         user_request = self.request.query_params.get('user')
@@ -21,13 +21,13 @@ class SubscribeListView(generics.ListCreateAPIView):
 class SubscribeView(generics.RetrieveUpdateDestroyAPIView):
     queryset = UserSubscribtion.objects.all()
     serializer_class = UserSubscriptionSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    #permission_classes = [permissions.IsAuthenticated]
 
 
 class TagsListView(generics.ListCreateAPIView):
     queryset = TagSubscribtion.objects.all()
     serializer_class = TagSubscriptionSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    #permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         user_request = self.request.query_params.get('user')
@@ -39,7 +39,7 @@ class TagsListView(generics.ListCreateAPIView):
 class TagsView(generics.RetrieveUpdateDestroyAPIView):
     queryset = TagSubscribtion.objects.all()
     serializer_class = TagSubscriptionSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    #permission_classes = [permissions.IsAuthenticated]
 
 
 class UsersListView(generics.ListAPIView):

@@ -22,7 +22,7 @@ Destroy Current token
 
 ## Subscriptions, Tags
 Returns user's tags
-- users/tags/ (GET, POST)
+- users/tag/ (GET, POST)
   - user(id) - who is subscribed
   - tag(id) - who this user subscribed to(tag)
     - Get parameters:
