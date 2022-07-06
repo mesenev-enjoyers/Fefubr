@@ -117,6 +117,7 @@ export default {
   background-color: #5F77BF;
   border-color: #5F77BF;
 }
+
 .btn:active {
   width: 300px;
   height: 54px;

@@ -90,13 +90,11 @@ export default {
 
 .mainDiv {
   margin: 30px 0 0 0;
-  position: relative;
-
 }
+
 .div-first-content{
   margin:0;
   padding: 0;
-  /*border: orangered 1px solid;*/
 }
 
 
@@ -104,9 +102,8 @@ export default {
   margin: 0;
   padding: 0;
   width: 97%;
-
   box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
-  background-color: fuchsia;
+  /*background-color: fuchsia;*/
 }
 
 .downrow-first-content{
@@ -115,7 +112,7 @@ export default {
   width: 97%;
   box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
   height: auto;
-  background-color: forestgreen;
+  /*background-color: forestgreen;*/
 
 }
 
@@ -123,10 +120,11 @@ export default {
   margin: 0;
   padding: 0;
   box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
-  background-color: aqua;
   height: 500px;
   position: sticky;
   top: 82px
+  /*background-color: aqua;*/
+
 }
 
 /*......................*/
