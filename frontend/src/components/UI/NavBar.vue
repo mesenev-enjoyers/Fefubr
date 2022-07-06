@@ -7,8 +7,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <div class="bg">
-    <div class="container">
+  <div class="bg sticky-top">
+    <div class="container ">
       <div class="navbar__btns row">
         <div class="logo-div col-3">
           <p class="logo block">Fefubr</p>
@@ -61,19 +61,35 @@ export default {
 
 <style scoped>
 
-/**{*/
-/*  padding: 0;*/
-/*  margin: 0;*/
-/*}*/
+.bg{
+  background-color: white;
+}
+
+.container{
+  padding: 0;
+}
 
 .logo-div{
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 0 10px 0;
   pointer-events: none;
+}
+
+.logo{
+  font-family: 'Inter';
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 61px;
+  color: #000000;
+
 }
 
 .main-div{
   padding-top: 23px;
+  padding-right: 0;
+  padding-left: 0;
+
 }
 
 .main-div button{
@@ -82,6 +98,8 @@ export default {
 
 .second-div{
   padding-top: 20px;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .second-div img {
@@ -131,14 +149,6 @@ button{
 
 /*дизайн кнопок + эффект*/
 
-.logo{
-  font-family: 'Inter';
-  text-transform: uppercase;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 50px;
-  line-height: 61px;
-  color: #000000;
-}
+
 
 </style>

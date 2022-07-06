@@ -58,8 +58,6 @@
         >
       </div>
 
-
-
       <div class="btn-div row justify-content-center">
         <button class="btn btn-primary">Зарегистрироваться</button>
       </div>
@@ -179,6 +177,7 @@ export default {
 
 .link{
   width: auto;
+  cursor: pointer;
   font-family: 'Inter',serif;
   font-style: normal;
   font-weight: normal;
