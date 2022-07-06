@@ -6,10 +6,10 @@
     <div class="content">
       <div class="title">{{post.name}}</div>
       <div class = "img" v-if="post.picture != null"><img :src="post.picture"></div>
-      <div class="mainContent">{{post.content}}</div>
+      <div class="mainContent" >{{post.content}}</div>
       <div class = "tags">
         <h6>Теги:</h6>
-        <div v-for = "tag in tags" :key="tag.id">{{tag.name}}</div>
+        <div v-for = "tag in tags" :key="tag.id">{{tag.name}} </div>
       </div>
 
     </div>
@@ -68,8 +68,8 @@ export default {
 <style scoped>
 
 img{
-  max-width: 860px;
-  max-height: 800px;
+  max-width: 760px;
+  max-height: 700px;
 }
 .container {
   margin-top: 15px;
