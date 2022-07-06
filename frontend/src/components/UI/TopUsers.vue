@@ -3,7 +3,7 @@
     <h2>Топ пользователей</h2>
     <div  v-for="user in TopUsers" :key="user.id">
       <div class="user d-inline-flex p-2">
-        <img :src="user.avatar">
+        <img :src="user.avatar" @click="$router.push('/user/' + user.id)">
         <div class="name-rate">
         {{user.username}} {{user.rating}}
         </div>

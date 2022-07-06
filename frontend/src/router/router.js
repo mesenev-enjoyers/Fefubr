@@ -6,14 +6,10 @@ import CreateUserPost from "@/Pages/CreateUserPost";
 import LoginPage from "@/Pages/LoginPage";
 import PostPage from "@/Pages/PostPage";
 import RegPage from "@/Pages/RegPage";
+import ProfilePage from "@/Pages/ProfilePage";
+import UserPage from "@/Pages/UserPage";
 
 
-// const isAuthorized = localStorage.getItem('token') !== null;
-//
-// const authGuard = function (to, from, next) {
-//     if (!isAuthorized) next({name: 'LoginPage'});
-//     else next()
-// }
 
 const routes = [
     {path: '/', component: MainPage, name: 'MainPage'},
@@ -23,6 +19,8 @@ const routes = [
     {path: '/login', component: LoginPage, name: 'LoginPage'},
     {path: '/post/:id', component: PostPage},
     {path: '/register', component: RegPage},
+    {path: '/profile', component: ProfilePage},
+    {path: '/user/:id', component: UserPage}
 ]
 const router = createRouter({
     routes,

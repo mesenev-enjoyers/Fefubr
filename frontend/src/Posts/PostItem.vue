@@ -1,7 +1,8 @@
 <template>
   <div class="container">
+
     <div class="creator d-inline-flex">
-      <img :src="creatorAvatar" alt="">
+      <img :src="creatorAvatar" @click="$router.push('/user/' + post.creator)" alt="">
       <div class="creator-name">
         {{creatorName}}
       </div>
@@ -64,14 +65,13 @@ export default {
       isAuthorized: localStorage.getItem('token') != null,
     }
   },
-
   mounted() {
     if (this.isAuthorized)
       axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
     axios.get(`http://fefubr.tk/api/users/${this.post.creator}`).then((res) => {this.creatorName = res.data.username,
     this.creatorAvatar = res.data.avatar})
     for(let i = 0; i < this.post.tags.length; ++i)
-    axios.get(`http://fefubr.tk/api/content/tag/${this.post.tags[i]}`).then((res) =>{
+      axios.get(`http://fefubr.tk/api/content/tag/${this.post.tags[i]}`).then((res) =>{
     this.tags.push({id: this.post.tags[i], name: res.data.name})
   })
   }
