@@ -4,8 +4,9 @@
     <div  v-for="user in TopUsers" :key="user.id">
       <div class="user d-inline-flex p-2">
         <img :src="user.avatar" @click="$router.push('/user/' + user.id)">
-        <div class="name-rate">
-        {{user.username}} {{user.rating}}
+        <div class="name-rate d-inline-flex ">
+          <div class="name">{{user.username}} </div>
+          <div class="rate"> {{user.rating}}</div>
         </div>
       </div>
     </div>
@@ -30,6 +31,15 @@ export default {
 </script>
 
 <style scoped>
+
+.name{
+  margin-right: 10px;
+}
+
+.rate{
+  color: green;
+}
+
 .root {
   padding: 10px;
   margin-top: 15px;
@@ -37,7 +47,6 @@ export default {
 }
 h2{
   font-family: 'Inter';
-
 
 }
 .user {
