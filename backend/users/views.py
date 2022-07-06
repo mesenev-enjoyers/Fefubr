@@ -15,7 +15,7 @@ class SubscribeListView(generics.ListCreateAPIView):
         user_request = self.request.query_params.get('user')
         if user_request is not None:
             return UserSubscribtion.objects.filter(user_id=user_request)
-        return UserSubscribtion.objects.filter(user_id=self.request.user)
+        return UserSubscribtion.objects.all()
 
 
 class SubscribeView(generics.RetrieveUpdateDestroyAPIView):
