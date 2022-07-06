@@ -47,11 +47,13 @@ export default {
       creatorName: '',
       creatorAvatar: '',
       date : this.post.date,
+      isAuthorized: localStorage.getItem('token') != null,
     }
   },
 
   mounted() {
-    axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
+    if (this.isAuthorized)
+      axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
     axios.get(`http://fefubr.tk/api/users/${this.post.creator}`).then((res) => {this.creatorName = res.data.username,
     this.creatorAvatar = res.data.avatar})
     for(let i = 0; i < this.post.tags.length; ++i)

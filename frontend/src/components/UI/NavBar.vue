@@ -48,9 +48,10 @@ export default {
     logout() {
       this.token = localStorage.getItem('token')
       localStorage.removeItem('token')
-      axios.post("http://fefubr.tk/api/auth/logout",{headers: {Authorization: `Token ${this.token}`}})
+      axios.post("http://fefubr.tk/api/auth/token/logout",{headers: {Authorization: `Token ${this.token}`}})
       this.token = ''
-      this.$router.push('/')
+      console.log("Я вышел!")
+      this.$router.go(0)
     }
   }
 }
