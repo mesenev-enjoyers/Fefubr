@@ -33,7 +33,7 @@ class TagsListView(generics.ListCreateAPIView):
         user_request = self.request.query_params.get('user')
         if user_request is not None:
             return TagSubscribtion.objects.filter(user_id=user_request)
-        return TagSubscribtion.objects.filter(user_id=self.request.user)
+        return TagSubscribtion.objects.all()
 
 
 class TagsView(generics.RetrieveUpdateDestroyAPIView):
