@@ -13,11 +13,21 @@
       <div class="title">{{post.name}}</div>
       <div class = "img" v-if="post.picture != null"><img :src="post.picture"></div>
       <div class="main-content" >{{post.content}}</div>
-      <div class = "tags">
-        <h6>Теги:</h6>
-        <div v-for = "tag in tags" :key="tag.id">{{tag.name}} </div>
+      <div class = " tags d-inline-flex">
+        <a class="tagg " href="#" v-for = "tag in tags" :key="tag.id">{{tag.name}}⠀</a>
       </div>
-
+      <div class="button-div">
+        <button class="btn btn-primary">Читать далее</button>
+      </div>
+<!--      <div v-if="post.is_liked">Лайкнут{{post.rating}}</div>-->
+          <div>
+            <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="33px" height="33px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+              <g>
+              <path d="M29.695,38l-6.661,24.74l1.776,0.845l26-36L50,26H37.166l3.823-24.848l-1.831-0.69l-23,36L17,38H29.695z M38.291,5.532 l-3.279,21.316L36,28h12.044l-21.66,29.991l5.582-20.731L31,36H18.826L38.291,5.532z"/>
+              </g>
+            </svg>
+            {{post.rating}}
+          </div>
     </div>
   </div>
 <!--  <div class = "post">-->
@@ -31,9 +41,7 @@
 <!--      <h6>Теги:</h6>-->
 <!--      <div v-for = "tag in tags" :key="tag.id">{{tag.name}}</div>-->
 <!--    </div>-->
-<!--    <div v-if="post.is_liked">Лайкнут</div>-->
-<!--    <div v-else>Не лайкнут</div>-->
-<!--  </div>-->
+
 </template>
 
 <script>
@@ -74,11 +82,11 @@ export default {
 <style scoped>
 
 .container {
-  padding: 10px;
+  padding: 20px;
 }
 
 img{
-  max-width: 760px;
+  max-width: 900px;
   max-height: 700px;
   margin-bottom: 22px;
 }
@@ -106,23 +114,68 @@ img{
 }
 
 .title{
+  max-width: 900px;
+
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
   color: #000000;
-  margin-top: 22px;
   margin-bottom: 22px;
 
 }
 
 .main-content{
+  max-width: 900px;
+  margin-bottom: 22px;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 16px;
+  /*line-height: 18px;*/
+}
+
+.tagg{
+  margin-bottom: 22px;
+}
+
+a{
+  cursor: pointer;
+  text-decoration: none;
+  color: #5F77BF;
+}
+
+.button-div{
+  margin-bottom: 22px;
+}
+
+.btn{
+  width: 150px;
+  height: 40px;
+  padding: 3px 5px 5px 5px;
+  margin-right: 20px;
+  color: black;
+  background-color:white;
+  border-width: 2px;
+  border-color: #5F77BF;
+}
+
+.btn:hover{
+  width: 150px;
+  height: 40px;
+  color: white;
+  background-color: #5F77BF;
+  border-color: #5F77BF;
+}
+
+.btn:active {
+  width: 150px;
+  height: 40px;
+  color: black;
+  background-color:white;
+  border-width: 2px;
+  border-color: #5F77BF;
 }
 
 </style>
