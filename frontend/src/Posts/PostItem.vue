@@ -1,7 +1,8 @@
 <template>
   <div class="container">
+
     <div class="creator d-inline-flex">
-      <img :src="creatorAvatar" alt="">
+      <img :src="creatorAvatar" @click="$router.push('/user/' + post.creator)" alt="">
       <div class="creator-name">
         {{creatorName}}
       </div>
@@ -56,7 +57,6 @@ export default {
       isAuthorized: localStorage.getItem('token') != null,
     }
   },
-
   mounted() {
     if (this.isAuthorized)
       axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
