@@ -140,9 +140,7 @@ label{
 }
 
 .btn-choose-img{
-  /*border: #5F77BF 2px solid;*/
-  /*background-color: #5F77BF;*/
-  color: white;
+  color: black;
   width: auto;
   margin-bottom: 20px;
 }
