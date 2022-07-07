@@ -6,7 +6,6 @@
       <input type="file" ref="file" @input="handleFileUpload">
       <button>Сменить</button>
     </form>
-
   </div>
 </template>
 
