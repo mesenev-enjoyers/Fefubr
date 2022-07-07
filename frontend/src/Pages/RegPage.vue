@@ -220,6 +220,7 @@ export default {
 .inp{
   width: 380px;
   height: 50px;
+  border-color: #5F77BF;
 }
 
 

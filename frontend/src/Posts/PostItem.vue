@@ -86,7 +86,7 @@ export default {
 }
 
 img{
-  max-width: 900px;
+  max-width: 650px;
   max-height: 700px;
   margin-bottom: 22px;
 }
@@ -133,7 +133,7 @@ img{
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  /*line-height: 18px;*/
+  /*line-height: 25px;*/
 }
 
 .tagg{

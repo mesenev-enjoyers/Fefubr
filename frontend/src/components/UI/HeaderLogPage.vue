@@ -11,7 +11,7 @@
     <div class="container">
       <div class="navbar__btns row">
         <div class="logo-div col-2">
-          <p class="logo block">Fefubr</p>
+          <a class="logo block" href="#">Fefubr</a>
         </div>
         <div class="logo-div col-2">
           <p class="account block">Аккаунт</p>
@@ -49,8 +49,6 @@ export default {
 
 .logo-div{
   padding: 10px 0 10px 0;
-
-  pointer-events: none;
 }
 
 .main-div button{
@@ -65,7 +63,14 @@ export default {
   font-size: 50px;
   line-height: 61px;
   color: #000000;
+  text-decoration: none;
+  cursor: pointer;
 }
+
+.logo:hover{
+  color: black;
+}
+
 .account{
   font-family: 'Inter';
   font-style: normal;
