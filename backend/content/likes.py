@@ -22,7 +22,7 @@ def add_like(obj, user):
         content_type=obj_type, object_id=obj.id, user=user)
     if is_created:
         obj.rating += 1
-        user.rating += 1
+        obj.creator.rating += 1
         obj.save()
         user.save()
 
