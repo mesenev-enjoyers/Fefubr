@@ -14,7 +14,7 @@
       <div class="title">{{post.name}}</div>
       <div class = "img" v-if="post.picture != null"><img :src="post.picture"></div>
       <div class="main-content" >{{truncate(post.content, 400)}}</div>
-      <div class = " tags d-inline-flex">
+      <div class = " tags d-inline-flex" >
         <a class="tagg " @click="$router.push('/tag/' + tag.id); " v-for = "tag in tags" :key="tag.id">{{tag.name}}⠀</a>
       </div>
       <div class="button-div">
