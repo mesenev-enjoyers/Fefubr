@@ -20,15 +20,18 @@
       <div class="button-div">
         <button class="btn btn-primary" @click="$router.push('/post/' + post.id)">Читать далее</button>
       </div>
-<!--      <div v-if="post.is_liked">Лайкнут{{post.rating}}</div>-->
-          <div>
-            <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="33px" height="33px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-              <g>
-              <path d="M29.695,38l-6.661,24.74l1.776,0.845l26-36L50,26H37.166l3.823-24.848l-1.831-0.69l-23,36L17,38H29.695z M38.291,5.532 l-3.279,21.316L36,28h12.044l-21.66,29.991l5.582-20.731L31,36H18.826L38.291,5.532z"/>
-              </g>
+          <button class="button-liked" v-if="post.is_liked">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning-charge svg-liked" viewBox="0 0 16 16">
+              <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41 4.157 8.5z"/>
             </svg>
             {{post.rating}}
-          </div>
+          </button>
+          <button class="button-unliked" v-else>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning-charge svg-not-liked" viewBox="0 0 16 16">
+              <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41 4.157 8.5z"/>
+            </svg>
+            {{post.rating}}
+          </button>
     </div>
   </div>
 <!--  <div class = "post">-->
@@ -94,6 +97,40 @@ export default {
 
 .container {
   padding: 20px;
+}
+
+.button-liked{
+  outline: none; /* Для синий ободки */
+  border: 0;
+  background: transparent;
+}
+
+.button-liked svg:hover{
+  color: black;
+
+}
+
+.button-unliked{
+  outline: none; /* Для синий ободки */
+  border: 0;
+  background: transparent;
+}
+
+.button-unliked svg:hover{
+  color: #5F77BF;
+}
+
+svg{
+  width: 30px;
+  height: 30px;
+}
+
+.svg-liked{
+  color: #5F77BF;
+}
+
+.svg-not-liked{
+  color: black;
 }
 
 img{
