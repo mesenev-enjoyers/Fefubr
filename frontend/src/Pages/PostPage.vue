@@ -1,11 +1,14 @@
 <template>
-  <nav-bar></nav-bar>
-  <div class="container">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+  <nav-bar></nav-bar>
+  <div class="container mdc">
     <div class="creator d-inline-flex">
       <img :src="postCreator.avatar" @click="$router.push('/user/' + postCreator.id)" alt="">
       <div class="creator-name">
-        {{postCreator.name}}
+        {{postCreator.username}}
       </div>
       <div class="creator-date">
         {{post.date}}
@@ -34,7 +37,7 @@
         </button>
       </div>
     </div>
-    <div class="container" style="margin-top: 15px"><p>Комментарии:</p>
+    <div class="container" style="margin-top: 15px"><p class="p-com">Комментарии:</p>
       <div class="comments" v-for="comment in comments" :key="comment.id">
         <div class="avaCommentCreator">
           <img :src="getCommentCreatorAvatar(comment)"> <strong>{{comment.creator_name}}</strong> {{getNormalDate(comment)}}
@@ -129,6 +132,12 @@ export default {
 </script>
 
 <style scoped>
+
+.mdc{
+  margin-top: 40px;
+  margin-bottom: 40px;
+  box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
+}
 
 .button-liked{
   outline: none; /* Для синий ободки */
@@ -228,13 +237,19 @@ a{
   text-decoration: none;
   color: #5F77BF;
 }
+
+.avaCommentCreator{
+  margin-bottom: 10px;
+}
+
 .avaCommentCreator img{
   max-height: 30px;
   height: 30px;
+  margin-bottom: auto;
 }
 .comments {
   margin-top: 15px;
-  padding: 15px;
+  padding: 10px 10px 10px 0;
 }
 .form-group {
   margin-top: 10px;
@@ -263,5 +278,14 @@ a{
   background-color:white;
   border-width: 2px;
   border-color: #5F77BF;
+}
+
+.p-com{
+  margin-top: 5px;
+  margin-right: 10px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
 }
 </style>
