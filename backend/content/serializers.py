@@ -23,9 +23,14 @@ class ArticleSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     is_liked = serializers.SerializerMethodField()
     creator_name = serializers.SerializerMethodField()
+    creator_avatar = serializers.SerializerMethodField()
+
+    def get_creator_avatar(self, obj):
+        return str(obj.creator.avatar)
 
     def get_creator_name(self, obj):
         return obj.creator.username
+
     def get_is_liked(self, obj):
         user = self.context.get('request').user
         return liked(obj, user)
