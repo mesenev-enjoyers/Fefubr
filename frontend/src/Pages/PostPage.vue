@@ -42,7 +42,8 @@ export default {
     return {
       post: {},
       postCreator: {},
-      tags: []
+      tags: [],
+      comments: [{}]
     }
   },
   methods: {
@@ -52,6 +53,7 @@ export default {
         this.post.date=this.post.date.substring(0,10)
         this.getPostCreator()
         this.getPostTags()
+        this.getPostCom()
       }).catch(() => {
         console.log("We got some problems")
       })
@@ -59,7 +61,6 @@ export default {
     getPostCreator() {
       axios.get('http://fefubr.tk/api/users/' + this.post.creator).then((res) => {
         this.postCreator = res.data
-        console.log(this.postCreator)
       })
     },
     getPostTags() {
@@ -68,6 +69,12 @@ export default {
           this.tags.push({id: this.post.tags[i], name: res.data.name})
         })
       }
+    },
+    getPostCom() {
+      axios.get('http://fefubr.tk/api/content/comment?article=' + this.post.id).then((res) => {
+        this.comments = res.data
+        console.log(res.data)
+      })
     }
   },
   mounted() {
