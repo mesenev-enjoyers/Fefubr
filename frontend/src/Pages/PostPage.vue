@@ -28,6 +28,21 @@
         {{post.rating}}
       </div>
     </div>
+    <div class="container" style="margin-top: 15px"><p>Комментарии:</p>
+      <div class="comments" v-for="comment in comments" :key="comment.id">
+        <div class="avaCommentCreator">
+          <img :src="getCommentCreatorAvatar(comment)"> <strong>{{comment.creator_name}}</strong> {{getNormalDate(comment)}}
+        </div>
+        <div>{{comment.content}}</div>
+      </div>
+      <form @submit.prevent="makeComment">
+        <div class="form-group">
+          <label for="content">Оставить комментарий</label>
+          <textarea v-model="commentContent" class="form-control main-content" id="content"></textarea>
+        </div>
+        <button class="btn">Опубликовать</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -43,7 +58,10 @@ export default {
       post: {},
       postCreator: {},
       tags: [],
-      comments: [{}]
+      comments: [],
+      commentContent: '',
+      isAuthorized: localStorage.getItem('token') != null,
+      currentUserId: ''
     }
   },
   methods: {
@@ -73,11 +91,32 @@ export default {
     getPostCom() {
       axios.get('http://fefubr.tk/api/content/comment?article=' + this.post.id).then((res) => {
         this.comments = res.data
-        console.log(res.data)
+        console.log(this.comments)
       })
+    },
+    getCommentCreatorAvatar(comment) {
+      return ('http://fefubr.tk/media/' + comment.creator_avatar)
+    },
+    getNormalDate(comment) {
+      return (comment.date.substring(0,10) + ' в ' + comment.date.substring(11,16))
+    },
+    makeComment() {
+      axios.post('http://fefubr.tk/api/content/comment', {
+        creator: this.currentUserId,
+        article: this.post.id,
+        content: this.commentContent
+      }).then(() => {
+        this.$router.go(0)
+      })
+          .catch('Com isn`t here')
     }
   },
   mounted() {
+    if (this.isAuthorized)
+      axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
+    axios.get('http://fefubr.tk/api/users/current').then((res) => {
+      this.currentUserId = res.data.id
+    }).catch('Id isn`t here')
     this.getCurrentPost()
   }
 }
@@ -147,5 +186,41 @@ a{
   cursor: pointer;
   text-decoration: none;
   color: #5F77BF;
+}
+.avaCommentCreator img{
+  max-height: 30px;
+  height: 30px;
+}
+.comments {
+  margin-top: 15px;
+  padding: 15px;
+}
+.form-group {
+  margin-top: 10px;
+}
+.btn{
+  width: 150px;
+  height: 54px;
+  color: black;
+  background-color:white;
+  border-width: 2px;
+  border-color: #5F77BF;
+}
+
+.btn:hover{
+  width: 150px;
+  height: 54px;
+  color: white;
+  background-color: #5F77BF;
+  border-color: #5F77BF;
+}
+
+.btn:active {
+  width: 150px;
+  height: 54px;
+  color: black;
+  background-color:white;
+  border-width: 2px;
+  border-color: #5F77BF;
 }
 </style>
