@@ -22,7 +22,10 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
     is_liked = serializers.SerializerMethodField()
+    creator_name = serializers.SerializerMethodField()
 
+    def get_creator_name(self, obj):
+        return obj.creator.username
     def get_is_liked(self, obj):
         user = self.context.get('request').user
         return liked(obj, user)
