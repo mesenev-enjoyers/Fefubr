@@ -31,8 +31,8 @@
                 <p class="p-tag">Тэги: Все </p>
               </div>
               <div class="btns-div col-9">
-                <button class="btn btn-primary">По времени</button>
-                <button class="btn btn-primary">По рейтингу</button>
+                <button class="btn btn-primary" @click="timeSort">По времени</button>
+                <button class="btn btn-primary" @click="ratingSort">По рейтингу</button>
               </div>
             </div>
           </div>
@@ -71,6 +71,7 @@ export default {
       },
       posts: [],
       isPostsLoading: false,
+      selectedSort: 'time',
     }
   },
   methods: {
@@ -85,10 +86,27 @@ export default {
       this.isPostsLoading = false
     },
 
+    timeSort() {
+      this.selectedSort = "date"
+    },
+    ratingSort() {
+      this.selectedSort = "rating"
+    }
+
   },
 
   mounted() {
     this.fetchPosts()
+  },
+
+  watch: {
+    selectedSort(newValue) {
+      console.log(newValue)
+      this.posts.sort(function (post1, post2) {
+        if (post1[newValue] < post2[newValue])
+          return 1
+      })
+    },
   }
 
 
