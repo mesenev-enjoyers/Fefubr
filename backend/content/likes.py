@@ -37,7 +37,7 @@ def remove_like(obj, user):
     if like.exists():
         like.delete()
         obj.rating -= 1
-        user.rating -= 1
+        obj.creator.rating -= 1
         obj.save()
         user.save()
 
