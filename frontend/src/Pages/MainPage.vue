@@ -1,20 +1,4 @@
 <template>
-<!--  <nav-bar></nav-bar>-->
-
-<!--    <div class="content">-->
-<!--    <div class="mainContent">-->
-<!--      <h1 v-if="isPostsLoading" style="text-align: center; margin-top: 20%">Идёт загрузка...</h1>-->
-<!--      <div v-else>-->
-<!--        <div v-if="posts.length > 0">-->
-<!--           <post-list :posts="posts"/>-->
-<!--        </div>-->
-<!--        <h1 v-else style="text-align: center; margin-top: 20%">Постов нет :(</h1>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="sideBar">-->
-<!--      <top-users></top-users>-->
-<!--    </div>-->
-<!--  </div>-->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,8 +15,8 @@
                 <p class="p-tag">Тэги: Все </p>
               </div>
               <div class="btns-div col-9">
-                <button class="btn btn-primary" @click="timeSort">По времени</button>
-                <button class="btn btn-primary" @click="ratingSort">По рейтингу</button>
+                <button class="btn btn-primary" @click.prevent="timeSort">По времени</button>
+                <button class="btn btn-primary" @click.prevent="ratingSort">По рейтингу</button>
               </div>
             </div>
           </div>

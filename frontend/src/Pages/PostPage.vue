@@ -35,7 +35,7 @@
         </div>
         <div>{{comment.content}}</div>
       </div>
-      <form @submit.prevent="makeComment">
+      <form v-if="isAuthorized" @submit.prevent="makeComment">
         <div class="form-group">
           <label for="content">Оставить комментарий</label>
           <textarea v-model="commentContent" class="form-control main-content" id="content"></textarea>
