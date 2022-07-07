@@ -7,6 +7,7 @@ import LoginPage from "@/Pages/LoginPage";
 import PostPage from "@/Pages/PostPage";
 import RegPage from "@/Pages/RegPage";
 import UserPage from "@/Pages/UserPage";
+import TagPage from "@/Pages/TagPage";
 
 
 
@@ -18,7 +19,8 @@ const routes = [
     {path: '/login', component: LoginPage, name: 'LoginPage'},
     {path: '/post/:id', component: PostPage},
     {path: '/register', component: RegPage},
-    {path: '/user/:id', component: UserPage}
+    {path: '/user/:id', component: UserPage},
+    {path: '/tag/:id', component: TagPage}
 ]
 const router = createRouter({
     routes,

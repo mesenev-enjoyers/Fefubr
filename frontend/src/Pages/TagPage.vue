@@ -1,5 +1,4 @@
 <template>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -15,8 +14,8 @@
                 <p class="p-tag">Тэги: Все </p>
               </div>
               <div class="btns-div col-9">
-                <button class="btn btn-primary" @click.prevent="timeSort">По времени</button>
-                <button class="btn btn-primary" @click.prevent="ratingSort">По рейтингу</button>
+                <button class="btn btn-primary" @click="timeSort">По времени</button>
+                <button class="btn btn-primary" @click="ratingSort">По рейтингу</button>
               </div>
             </div>
           </div>
@@ -26,31 +25,25 @@
         </div>
       </div>
       <div class="col-3 div-second-content rounded-1">
-              <top-users></top-users>
+        <top-users></top-users>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-// import PostList from "@/Posts/PostList";
-import NavBar from "@/components/UI/NavBar";
 import TopUsers from "@/components/UI/TopUsers";
+import NavBar from "@/components/UI/NavBar";
 import PostItem from "@/Posts/PostItem";
+import axios from "axios";
 export default {
-  components: {
-    PostItem,
-    TopUsers,
-    NavBar,
-    // PostList,
-  },
-  name: "MainPage",
+  name: "TagPage",
+  components: {PostItem, NavBar, TopUsers},
+
   data() {
     return {
       isAuthorized: localStorage.getItem('token') != null,
       posts: [],
-      isPostsLoading: false,
       selectedSort: 'time',
     }
   },
@@ -60,21 +53,16 @@ export default {
         axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
       else
         console.log("I'm not authorized!")
-      this.isPostsLoading = true
-      const response = await axios.get('http://fefubr.tk/api/content/article')
+      const response = await axios.get('http://fefubr.tk/api/content/article?tag=' + this.$route.params.id)
       this.posts = response.data
-      this.isPostsLoading = false
     },
-
     timeSort() {
       this.selectedSort = "date"
     },
     ratingSort() {
       this.selectedSort = "rating"
     }
-
   },
-
   mounted() {
     this.fetchPosts()
   },
@@ -88,13 +76,10 @@ export default {
       })
     },
   }
-
-
 }
 </script>
 
 <style scoped>
-
 .mainDiv {
   margin: 30px 0 0 0;
 }
@@ -111,7 +96,6 @@ export default {
   width: 97%;
   height: 60px;
   box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
-  /*background-color: fuchsia;*/
 }
 
 .content-uprow{
@@ -164,7 +148,6 @@ export default {
   width: 97%;
   box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
   height: auto;
-  /*background-color: forestgreen;*/
 
 }
 
@@ -175,27 +158,6 @@ export default {
   height: 800px;
   position: sticky;
   top: 82px
-  /*background-color: aqua;*/
 
 }
-
-/*......................*/
-
-
-/*.content {*/
-/*  display: flex;*/
-/*}*/
-/*.mainContent {*/
-/*  width: 70%;*/
-/*  text-align: center;*/
-/*  border: 1px solid black;*/
-/*  box-shadow: -1px -1px 5px gray, 1px 1px 5px gray;*/
-/*}*/
-/*.sideBar {*/
-/*  width: 30%;*/
-/*}*/
-
-
-
-
 </style>

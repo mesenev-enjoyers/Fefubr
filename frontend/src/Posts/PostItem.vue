@@ -15,7 +15,7 @@
       <div class = "img" v-if="post.picture != null"><img :src="post.picture"></div>
       <div class="main-content" >{{truncate(post.content, 400)}}</div>
       <div class = " tags d-inline-flex">
-        <a class="tagg " href="#" v-for = "tag in tags" :key="tag.id">{{tag.name}}⠀</a>
+        <a class="tagg " @click="$router.push('/tag/' + tag.id); " v-for = "tag in tags" :key="tag.id">{{tag.name}}⠀</a>
       </div>
       <div class="button-div">
         <button class="btn btn-primary" @click="$router.push('/post/' + post.id)">Читать далее</button>
@@ -75,6 +75,7 @@ export default {
     }
   },
     mounted() {
+
     if (this.isAuthorized)
       axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
     axios.get(`http://fefubr.tk/api/users/${this.post.creator}`).then((res) => {this.creatorName = res.data.username,
@@ -82,6 +83,7 @@ export default {
     for(let i = 0; i < this.post.tags.length; ++i)
       axios.get(`http://fefubr.tk/api/content/tag/${this.post.tags[i]}`).then((res) =>{
     this.tags.push({id: this.post.tags[i], name: res.data.name})
+
   })
   }
 }
