@@ -20,13 +20,13 @@
       <div class="button-div">
         <button class="btn btn-primary" @click="$router.push('/post/' + post.id)">Читать далее</button>
       </div>
-          <button class="button-liked" v-if="post.is_liked">
+          <button class="button-liked" v-if="post.is_liked" @click="removeLike">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning-charge svg-liked" viewBox="0 0 16 16">
               <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41 4.157 8.5z"/>
             </svg>
             {{post.rating}}
           </button>
-          <button class="button-unliked" v-else>
+          <button class="button-unliked" v-else @click="makeLike">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning-charge svg-not-liked" viewBox="0 0 16 16">
               <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41 4.157 8.5z"/>
             </svg>
@@ -57,8 +57,10 @@ export default {
     post: {
       type: Object,
       required: true
-    }
+    },
+
   },
+  emits: ['addLike', 'removeLike'],
   data() {
     return {
       tags: [],
@@ -75,8 +77,31 @@ export default {
       } else {
         return value;
       }
-    }
-  },
+    },
+    makeLike() {
+      if(!this.isAuthorized)
+        return;
+
+      axios.get('http://fefubr.tk/api/content/article/' + this.post.id + '?like=true').then((res) =>{
+        // eslint-disable-next-line vue/no-mutating-props
+        this.post.is_liked = true
+        // eslint-disable-next-line vue/no-mutating-props
+        this.post.rating++
+        console.log(res.data.id)
+      })
+    },
+    removeLike() {
+      axios.get('http://fefubr.tk/api/content/article/' + this.post.id + '?unlike=true').then((res) =>{
+        // eslint-disable-next-line vue/no-mutating-props
+        this.post.is_liked = false
+        // eslint-disable-next-line vue/no-mutating-props
+        this.post.rating--
+        console.log(res.data.id)
+    })
+
+  }
+},
+
     mounted() {
 
     if (this.isAuthorized)
