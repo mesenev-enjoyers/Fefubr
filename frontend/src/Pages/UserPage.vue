@@ -41,7 +41,7 @@
       <div class="user-subs-div d1 col">
         <p class="p-subs">Подписки:</p>
         <div class="subs-elements-div row row-cols-3">
-          <a  class="sub-element col" v-for="sub in userSubscribe" :key="sub.id">{{sub.subscribe_name}}</a>
+          <a  class="sub-element col" v-for="sub in userSubscribe" :key="sub.id"  @click="$router.push('/user/' + sub.subscribe)">{{sub.subscribe_name}}</a>
         </div>
       </div>
       <div class="user-subs-div d2 col">
@@ -113,14 +113,14 @@ export default {
       console.log(this.userSubscribe)
     },
     getUserTags() {
-      axios.get('http://fefubr.tk/api/users/tag?users=' + this.user.id).then((res) => {
+      axios.get('http://fefubr.tk/api/users/tag?user=' + this.$route.params.id).then((res) => {
         for (let i = 0; i < res.data.length; ++i) {
           this.userTags.push(res.data[i])
         }
       })
     },
     getUserSubscribe() {
-      axios.get('http://fefubr.tk/api/users/subscribe?users=' + this.user.id).then((res) => {
+      axios.get('http://fefubr.tk/api/users/subscribe?user=' + this.$route.params.id).then((res) => {
         for (let i = 0; i < res.data.length; ++i) {
           this.userSubscribe.push(res.data[i])
         }
