@@ -23,6 +23,7 @@ def add_like(obj, user):
     if is_created:
         obj.rating += 1
         obj.creator.rating += 1
+        obj.creator.save()
         obj.save()
         user.save()
 
@@ -38,6 +39,7 @@ def remove_like(obj, user):
         like.delete()
         obj.rating -= 1
         obj.creator.rating -= 1
+        obj.creator.save()
         obj.save()
         user.save()
 
