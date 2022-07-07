@@ -1,12 +1,6 @@
 <template>
   <nav-bar></nav-bar>
   <div class="root">
-    <img :src="user.avatar">
-    <form @submit="changeAvatar">
-      <input type="file" ref="file" @input="handleFileUpload">
-      <button>Сменить</button>
-    </form>
-
   </div>
 </template>
 

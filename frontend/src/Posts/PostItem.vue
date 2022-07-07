@@ -13,12 +13,12 @@
     <div class="content">
       <div class="title">{{post.name}}</div>
       <div class = "img" v-if="post.picture != null"><img :src="post.picture"></div>
-      <div class="main-content" >{{post.content}}</div>
+      <div class="main-content" >{{truncate(post.content, 400)}}</div>
       <div class = " tags d-inline-flex">
         <a class="tagg " href="#" v-for = "tag in tags" :key="tag.id">{{tag.name}}⠀</a>
       </div>
       <div class="button-div">
-        <button class="btn btn-primary">Читать далее</button>
+        <button class="btn btn-primary" @click="$router.push('/post/' + post.id)">Читать далее</button>
       </div>
 <!--      <div v-if="post.is_liked">Лайкнут{{post.rating}}</div>-->
           <div>
@@ -65,7 +65,16 @@ export default {
       isAuthorized: localStorage.getItem('token') != null,
     }
   },
-  mounted() {
+  methods: {
+    truncate(value, length) {
+      if (value.length > length) {
+        return value.substring(0, length) + "...";
+      } else {
+        return value;
+      }
+    }
+  },
+    mounted() {
     if (this.isAuthorized)
       axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
     axios.get(`http://fefubr.tk/api/users/${this.post.creator}`).then((res) => {this.creatorName = res.data.username,
