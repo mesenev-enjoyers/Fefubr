@@ -22,10 +22,10 @@ export default {
   data() {
     return {
       user: {},
-      userTags: [],
-      userSubscribe: [],
+      userTags: [], //Теги, на которые чел подписан
+      userSubscribe: [], //Люди, на которых чел подписан
       isAuthorized: localStorage.getItem('token') != null,
-      isCurrentUser: false,
+      isCurrentUser: false, // Проверка, что за чел перешл на страницу
       file: ''
     }
   },
@@ -42,6 +42,24 @@ export default {
       axios.get('http://fefubr.tk/api/users/' + this.$route.params.id).then((res) => {
         this.user = res.data
         this.file = this.user.avatar
+      })
+      this.getUserTags()
+      this.getUserSubscribe()
+      console.log(this.userTags)
+      console.log(this.userSubscribe)
+    },
+    getUserTags() {
+      axios.get('http://fefubr.tk/api/users/tag?users=' + this.user.id).then((res) => {
+        for (let i = 0; i < res.data.length; ++i) {
+          this.userTags.push(res.data[i])
+        }
+      })
+    },
+    getUserSubscribe() {
+      axios.get('http://fefubr.tk/api/users/subscribe?users=' + this.user.id).then((res) => {
+        for (let i = 0; i < res.data.length; ++i) {
+          this.userSubscribe.push(res.data[i])
+        }
       })
     },
     handleFileUpload() {
