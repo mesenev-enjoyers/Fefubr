@@ -83,6 +83,6 @@ class MyArticleView(generics.ListCreateAPIView):
         if rating is not None:
             query = query.order_by('-rating')
 
-        return query
+        return query.distinct()
 
 
