@@ -1,11 +1,10 @@
 from rest_framework import generics, mixins, permissions
 
+from telegrambot.bot import send_article
 from users.models_subscription import UserSubscribtion, TagSubscribtion
 from .serializers import *
 from .models import *
 from .likes import ContentAPIMixin
-
-
 
 
 class ArticleListView(generics.ListCreateAPIView):
@@ -25,6 +24,16 @@ class ArticleListView(generics.ListCreateAPIView):
         if rating is not None:
             query = query.order_by('-rating')
         return query
+
+    def post(self, request, *args, **kwargs):
+        response = self.create(request, *args, **kwargs)
+        user = self.request.user
+        subs = UserSubscribtion.objects.filter(subscribe=user)
+        for i in subs:
+            sub = i.user
+            if sub.telegram != '':
+                send_article(sub.telegram, response.data, user.username)  # Рассылка в телеге, response.data - статья
+        return response
 
 
 class ArticleView(ContentAPIMixin):
