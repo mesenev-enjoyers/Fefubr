@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'djoser',
     'users',
     'content',
+    'telebot'
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
