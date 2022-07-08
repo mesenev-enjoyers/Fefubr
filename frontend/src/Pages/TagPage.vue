@@ -74,7 +74,6 @@ export default {
           }
         }
         this.isSubscribe = check
-        console.log((this.isSubscribe))
       })
     },
     subscribeToTag() {
@@ -103,51 +102,11 @@ export default {
 </script>
 
 <style scoped>
-.btns-div{
-  width: auto;
-}
 .btn-2-div{
   width: auto;
   padding-top: 5px;
   padding-left: 0;
   margin-right: 50px;
-}
-.btns-div{
-  padding: 0 0 0 30px;
-  width: auto;
-}
-
-
-.btn{
-  width: 200px;
-  height: 40px;
-  padding: 2px 5px 5px 5px;
-  margin-right: 20px;
-  color: black;
-  background-color:white;
-  border-width: 2px;
-  border-color: #5F77BF;
-}
-
-.btn:hover{
-  width: 200px;
-  height: 40px;
-  color: white;
-  background-color: #5F77BF;
-  border-color: #5F77BF;
-}
-
-.btn:active {
-  width: 200px;
-  height: 40px;
-  color: black;
-  background-color:white;
-  border-width: 2px;
-  border-color: #5F77BF;
-}
-
-.btn:focus {
-  box-shadow: none !important;
 }
 
 .btn-2{

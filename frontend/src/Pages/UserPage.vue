@@ -189,6 +189,7 @@ export default {
   },
   watch: {
     $route() {
+      this.CheckUser()
       this.getUserData()
     },
   }

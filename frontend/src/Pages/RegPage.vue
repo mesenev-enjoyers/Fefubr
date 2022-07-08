@@ -106,7 +106,7 @@ export default {
           this.$router.push('/')
         })
       }).catch(function () {
-        console.log("error"); // FIXME
+        console.log("error");
       })
     },
   }
