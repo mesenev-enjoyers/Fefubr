@@ -11,11 +11,9 @@
           <div class="row uprow-first-content rounded-1 justify-content-center">
             <div class="row content-uprow">
               <div class="p-tag-div col-3">
-                <p class="p-tag">Тэги: {{selectedTag}} </p>
+                <p class="p-tag">Тэг: {{selectedTag}} </p>
               </div>
-              <div class="btn-2-div">
-                <button class="btn-2 " >Подписаться</button>
-              </div>
+              <slot></slot>
               <div v-for="tag in allTags" :key="tag.id">
                 <div class="name-rate d-inline-flex">
                   <a @click="$router.push('/tag/' + tag.id)">{{tag.name}}</a>
@@ -83,9 +81,6 @@ export default {
 
 <style scoped>
 
-.btns-div{
-  width: auto;
-}
 
 
 .mainDiv {
@@ -121,72 +116,8 @@ export default {
   width: auto;
 }
 
-.btn-2-div{
-  width: auto;
-  padding-top: 5px;
-  padding-left: 0;
-  margin-right: 50px;
-}
-
-.btns-div{
-  padding: 0 0 0 30px;
-}
 
 
-.btn{
-  width: 200px;
-  height: 40px;
-  padding: 2px 5px 5px 5px;
-  margin-right: 20px;
-  color: black;
-  background-color:white;
-  border-width: 2px;
-  border-color: #5F77BF;
-}
-
-.btn:hover{
-  width: 200px;
-  height: 40px;
-  color: white;
-  background-color: #5F77BF;
-  border-color: #5F77BF;
-}
-
-.btn:active {
-  width: 200px;
-  height: 40px;
-  color: black;
-  background-color:white;
-  border-width: 2px;
-  border-color: #5F77BF;
-}
-
-.btn:focus {
-  box-shadow: none !important;
-}
-
-.btn-2{
-  width: 120px;
-  height: 30px;
-  color: black;
-  background-color:white;
-  border-width: 2px;
-  border-color: #5F77BF;
-  border-radius: 5px;
-}
-
-.btn-2:hover{
-  color: white;
-  background-color: #5F77BF;
-  border-color: #5F77BF;
-}
-
-.btn-2:active {
-  color: black;
-  background-color:white;
-  border-width: 2px;
-  border-color: #5F77BF;
-}
 
 .downrow-first-content{
   margin: 25px 0 0 0;
