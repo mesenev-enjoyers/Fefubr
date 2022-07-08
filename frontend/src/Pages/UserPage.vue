@@ -80,13 +80,14 @@ export default {
     CheckUser() {
       if (this.isAuthorized) {
         axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
+        this.checkSubscriptionTo()
         axios.get('http://fefubr.tk/api/users/current').then((res) => {
           this.isCurrentUser = (res.data.id == this.$route.params.id)
           this.currentUserId = res.data.id
-          this.checkSubscriptionTo()
         })
       }
     },
+
     getUserData() {
       axios.get('http://fefubr.tk/api/users/' + this.$route.params.id).then((res) => {
         this.user = res.data
@@ -123,6 +124,7 @@ export default {
             this.userArticle = tmp_userArticle
       })
     },
+
     checkSubscriptionTo() {
       axios.get('http://fefubr.tk/api/users/subscribe?user=' + this.currentUserId).then((res) => { //Подписки чела, который першел на страницу
         let currentUserSubs = res.data
@@ -135,7 +137,6 @@ export default {
           }
         }
         this.isSubscribeTo = check
-        console.log(this.isSubscribeTo)
       })
     },
     subscribeToUser() {
@@ -151,9 +152,9 @@ export default {
       axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
       axios.delete('http://fefubr.tk/api/users/subscribe/' + this.subscribeId).then(() => {
         this.isSubscribeTo = false
-        console.log("all is good")
       })
     },
+
     handleFileUpload() {
       this.file = this.$refs.file.files[0]
     },
@@ -169,6 +170,7 @@ export default {
       })
     },
   },
+
   mounted() {
     this.CheckUser()
     this.getUserData()
@@ -176,7 +178,7 @@ export default {
   watch: {
     $route() {
       this.getUserData()
-    }
+    },
   }
 }
 </script>

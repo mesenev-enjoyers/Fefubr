@@ -2,49 +2,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-  <nav-bar></nav-bar>
-  <div class="container">
-    <div class="row mainDiv ">
-      <div class="col-9 div-first-content ">
-        <div class="col col-first-content ">
-          <div class="row uprow-first-content rounded-1 justify-content-center">
-            <div class="row content-uprow">
-              <div class="p-tag-div col-3">
-                <p class="p-tag">Тэги: Все </p>
-              </div>
-              <div class="btns-div col-9">
-                <button class="btn btn-primary" @click="timeSort">По времени</button>
-                <button class="btn btn-primary" @click="ratingSort">По рейтингу</button>
-              </div>
-            </div>
-          </div>
-          <div class="row downrow-first-content  rounded-1"  v-for="post in posts"  :key = "post.id">
-            <post-item  :post = "post"/>
-          </div>
-        </div>
-      </div>
-      <div class="col-3 div-second-content rounded-1">
-        <top-users></top-users>
-      </div>
-    </div>
-  </div>
+  <main-content-component :selected-tag="tagName" :posts="posts"></main-content-component>
 </template>
 
 <script>
-import TopUsers from "@/components/UI/TopUsers";
-import NavBar from "@/components/UI/NavBar";
-import PostItem from "@/Posts/PostItem";
 import axios from "axios";
+import MainContentComponent from "@/components/UI/MainContentComponent";
 export default {
   name: "TagPage",
-  components: {PostItem, NavBar, TopUsers},
-
+  components: {MainContentComponent},
   data() {
     return {
       isAuthorized: localStorage.getItem('token') != null,
       posts: [],
-      selectedSort: 'time',
+      tagName: '',
     }
   },
   methods: {
@@ -56,108 +27,25 @@ export default {
       const response = await axios.get('http://fefubr.tk/api/content/article?tag=' + this.$route.params.id)
       this.posts = response.data
     },
-    timeSort() {
-      this.selectedSort = "date"
-    },
-    ratingSort() {
-      this.selectedSort = "rating"
+    getTagName() {
+      axios.get('http://fefubr.tk/api/content/tag/' + this.$route.params.id).then((res) => {
+        this.tagName = res.data.name
+      })
     }
   },
   mounted() {
     this.fetchPosts()
+    this.getTagName()
   },
-
   watch: {
-    selectedSort(newValue) {
-      console.log(newValue)
-      this.posts.sort(function (post1, post2) {
-        if (post1[newValue] < post2[newValue])
-          return 1
-      })
+    $route() {
+      this.fetchPosts()
+      this.getTagName()
     },
   }
 }
 </script>
 
 <style scoped>
-.mainDiv {
-  margin: 30px 0 0 0;
-}
 
-.div-first-content{
-  margin:0;
-  padding: 0;
-}
-
-
-.uprow-first-content{
-  margin: 0;
-  padding: 0;
-  width: 97%;
-  height: 60px;
-  box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
-}
-
-.content-uprow{
-  margin: 0;
-  padding: 10px 0 0 0 ;
-}
-
-.p-tag{
-  margin: 0;
-  padding: 8px 0 0 0;
-  width: auto;
-}
-
-.btns-div{
-  padding: 0 0 0 30px;
-}
-
-
-.btn{
-  width: 200px;
-  height: 40px;
-  padding: 2px 5px 5px 5px;
-  margin-right: 20px;
-  color: black;
-  background-color:white;
-  border-width: 2px;
-  border-color: #5F77BF;
-}
-
-.btn:hover{
-  width: 200px;
-  height: 40px;
-  color: white;
-  background-color: #5F77BF;
-  border-color: #5F77BF;
-}
-
-.btn:active {
-  width: 200px;
-  height: 40px;
-  color: black;
-  background-color:white;
-  border-width: 2px;
-  border-color: #5F77BF;
-}
-
-.downrow-first-content{
-  margin: 25px 0 0 0;
-  padding: 0;
-  width: 97%;
-  box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
-  height: auto;
-
-}
-
-.div-second-content{
-  margin: 0;
-  padding: 0;
-  box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
-  height: 800px;
-  position: sticky;
-  top: 82px
-
-}
 </style>

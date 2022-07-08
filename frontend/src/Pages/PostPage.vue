@@ -102,7 +102,7 @@ export default {
       })
     },
     getCommentCreatorAvatar(comment) {
-      return ('http://fefubr.tk/media/' + comment.creator_avatar)
+      return ('http://fefubr.tk/api/media/' + comment.creator_avatar)
     },
     getNormalDate(comment) {
       return (comment.date.substring(0,10) + ' в ' + comment.date.substring(11,16))
@@ -114,7 +114,7 @@ export default {
         content: this.commentContent
       }).then(() => {
         this.$router.go(0)
-      }).catch('Com isn`t here')
+      })
     },
     addLike() {
       if(!this.isAuthorized)

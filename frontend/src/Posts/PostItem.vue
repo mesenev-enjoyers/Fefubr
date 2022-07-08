@@ -34,17 +34,6 @@
           </button>
     </div>
   </div>
-<!--  <div class = "post">-->
-<!--    <div class = "name">{{post.name}}</div>-->
-<!--    <div class = "content">{{post.content}}</div>-->
-<!--    <div class = "date">{{post.date.substring(0,10)}}</div>-->
-<!--    <div class = "rating">{{post.rating}}</div>-->
-<!--    <div class = "img" v-if="post.picture != null"><img :src="post.img"></div> &lt;!&ndash; FIXME &ndash;&gt;-->
-<!--    <div class = "creator">{{this.creatorName}}</div>-->
-<!--    <div class = "tags">-->
-<!--      <h6>Теги:</h6>-->
-<!--      <div v-for = "tag in tags" :key="tag.id">{{tag.name}}</div>-->
-<!--    </div>-->
 
 </template>
 

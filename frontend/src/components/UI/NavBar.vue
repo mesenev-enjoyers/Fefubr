@@ -5,50 +5,97 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
   <!--    Импорт шрифта Inter-->
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <div class="bg sticky-top">
-    <div class="container ">
-      <div class="navbar__btns row">
-        <div class="logo-div col-3">
-          <p class="logo block">Fefubr</p>
-        </div>
-        <div class="main-div col-6">
-          <button class="btn block" @click="$router.push('/')" >Все статьи</button>
-          <button class="btn block" v-if="isAuthorized" @click="$router.push('/mynews')">Моя лента</button>
-          <button class="btn block" v-else @click="$router.push('/login')">Моя лента</button>
-          <button class="btn block" v-if="isAuthorized" @click="$router.push('/chats')" >Общение</button>
-          <button class="btn block" v-else @click="$router.push('/login')" >Общение</button>
-        </div>
-        <div class="second-div col-3 d-flex bd-highlight">
-
-          <button class="svg write block p-2 flex-grow-1 bd-highlight" v-if="isAuthorized" @click="$router.push('/createpost')">
+  <nav class="navbar navbar-expand-lg navbar-light bg sticky-top mx-auto">
+    <div class="container-fluid container">
+      <a class="navbar-brand logo block" href="#">Fefubr</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse sm" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+          <li class="nav-item ps-lg-5 px-lg-3">
+            <button class="btn block " @click="$router.push('/')" >Все статьи</button>
+          </li>
+          <li class="nav-item px-lg-3">
+            <button class="btn block" v-if="isAuthorized" @click="$router.push('/mynews')">Моя лента</button>
+            <button class="btn block" v-else @click="$router.push('/login')">Моя лента</button>
+          </li>
+          <li class="nav-item px-lg-3">
+            <button class="btn block" v-if="isAuthorized" @click="$router.push('/chats')" >Общение</button>
+            <button class="btn block" v-else @click="$router.push('/login')" >Общение</button>
+          </li>
+        </ul>
+        <div class="second-content-navbar">
+          <button class="svg write float-start" v-if="isAuthorized" @click="$router.push('/createpost')">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
               <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
               <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
             </svg>
           </button>
 
-          <button class="svg block p-2 bd-highlight" v-if="isAuthorized" @click="getCurrentUser">
+          <button class="svg write float-start" v-else @click="$router.push('/login')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+            </svg>
+          </button>
+
+          <button class="svg float-end" v-if="isAuthorized" @click="getCurrentUser">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
               <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
             </svg>
           </button>
 
-          <button class="svg write block p-2 flex-grow-1 bd-highlight" v-else @click="$router.push('/login')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-            </svg>
-          </button>
-          <button class="btn block p-2 bd-highlight" v-if="!isAuthorized" @click="$router.push('/login')" >Вход</button>
-          <button class="btn block p-2 bd-highlight" v-else @click="logout" >Выйти</button>
+          <button class="btn float-end exit" v-if="!isAuthorized" @click="$router.push('/login')" >Вход</button>
+          <button class="btn float-end exit" v-else @click="logout" >Выйти</button>
         </div>
       </div>
     </div>
-  </div>
+  </nav>
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+<!--  <div class="bg sticky-top">-->
+<!--    <div class="container ">-->
+<!--      <div class="navbar__btns row">-->
+<!--        <div class="logo-div col-3">-->
+<!--          <p class="logo block">Fefubr</p>-->
+<!--        </div>-->
+<!--        <div class="main-div col-6">-->
+<!--          <button class="btn block" @click="$router.push('/')" >Все статьи</button>-->
+<!--          <button class="btn block" v-if="isAuthorized" @click="$router.push('/mynews')">Моя лента</button>-->
+<!--          <button class="btn block" v-else @click="$router.push('/login')">Моя лента</button>-->
+<!--          <button class="btn block" v-if="isAuthorized" @click="$router.push('/chats')" >Общение</button>-->
+<!--          <button class="btn block" v-else @click="$router.push('/login')" >Общение</button>-->
+<!--        </div>-->
+<!--        <div class="second-div col-3 d-flex bd-highlight">-->
+
+<!--          <button class="svg write block p-2 flex-grow-1 bd-highlight" v-if="isAuthorized" @click="$router.push('/createpost')">-->
+<!--            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">-->
+<!--              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>-->
+<!--              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>-->
+<!--            </svg>-->
+<!--          </button>-->
+
+<!--          <button class="svg block p-2 bd-highlight" v-if="isAuthorized" @click="getCurrentUser">-->
+<!--            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">-->
+<!--              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>-->
+<!--              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>-->
+<!--            </svg>-->
+<!--          </button>-->
+
+<!--          <button class="svg write block p-2 flex-grow-1 bd-highlight" v-else @click="$router.push('/login')">-->
+<!--            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">-->
+<!--              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>-->
+<!--              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>-->
+<!--            </svg>-->
+<!--          </button>-->
+<!--          <button class="btn block p-2 bd-highlight" v-if="!isAuthorized" @click="$router.push('/login')" >Вход</button>-->
+<!--          <button class="btn block p-2 bd-highlight" v-else @click="logout" >Выйти</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 </template>
 
 
@@ -85,6 +132,17 @@ export default {
 <style scoped>
 
 
+
+.navbar-collapse{
+  background-color: white;
+
+}
+
+.second-content-navbar{
+  width: 30%;
+}
+
+
 .write{
   text-align: left;
 }
@@ -99,13 +157,6 @@ svg:hover{
 }
 
 
-.bg{
-  background-color: white;
-}
-
-.container{
-  padding: 0;
-}
 
 .logo-div{
   padding: 10px 0 10px 0;
@@ -130,9 +181,9 @@ svg:hover{
 
 }
 
-.main-div button{
-  padding-right: 40px;
-}
+/*.main-div button{*/
+/*  padding-right: 40px;*/
+/*}*/
 
 .second-div{
   /*padding-top: 20px;*/
@@ -142,6 +193,7 @@ svg:hover{
 
 
 .bg{
+  background-color: white;
   height: 82px;
   box-shadow: 0 4px 4px gray;
   margin: 0;
@@ -186,8 +238,18 @@ button{
   box-shadow: none !important;
 }
 
-/*дизайн кнопок + эффект*/
+@media (max-width: 1350px){
+  .logo{
+    font-size: 40px;
+  }
+  button{
+    padding: 0;
+  }
+  .exit{
+    padding-top: 5px;
+  }
 
+}
 
 
 </style>

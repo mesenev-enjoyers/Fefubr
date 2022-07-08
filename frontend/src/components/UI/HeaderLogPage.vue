@@ -6,19 +6,27 @@
   <!--    Импорт шрифта Inter-->
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <div class="bg">
-    <div class="container">
-      <div class="navbar__btns row">
-        <div class="logo-div col-2">
-          <a class="logo block" href="#">Fefubr</a>
-        </div>
-        <div class="logo-div col-2">
-          <p class="account block">Аккаунт</p>
-        </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg mx-auto">
+    <div class="container-fluid container d-flex">
+      <div class="a-div">
+        <a class="navbar-brand logo " href="#">Fefubr <span class="account">Аккаунт</span></a>
       </div>
+
     </div>
-  </div>
+  </nav>
+
+<!--  <div class="bg">-->
+<!--    <div class="container">-->
+<!--      <div class="navbar__btns row">-->
+<!--        <div class="logo-div col-2">-->
+<!--          <a class="logo block" href="#">Fefubr</a>-->
+<!--        </div>-->
+<!--        <div class="logo-div col-2">-->
+<!--          <p class="account block">Аккаунт</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 </template>
 
 
