@@ -58,7 +58,7 @@
       <div class="article-one-div col " v-for="article in userArticle" :key="article.id">
         <p class="p-article-content">{{article.name}}</p>
         <div class="button-read-div d-flex justify-content-center">
-          <button class="button-read">Читать</button>
+          <button class="button-read" @click="$router.push('/post/' + article.id)">Читать</button>
         </div>
       </div>
 
