@@ -65,6 +65,7 @@ export default {
       user: {},
       userTags: [], //Теги, на которые чел подписан
       userSubscribe: [], //Люди, на которых чел подписан
+      userArticle: [], //Статье данного чела
       isAuthorized: localStorage.getItem('token') != null,
       isCurrentUser: false, // Проверка, что за чел перешл на страницу
       file: ''
@@ -86,14 +87,15 @@ export default {
       })
       this.getUserTags()
       this.getUserSubscribe()
+      this.getUserArticle()
     },
     getUserTags() {
       axios.get('http://fefubr.tk/api/users/tag?user=' + this.$route.params.id).then((res) => {
-        let tmp_uesrTags = []
+        let tmp_userTags = []
         for (let i = 0; i < res.data.length; ++i) {
-          tmp_uesrTags.push(res.data[i])
+          tmp_userTags.push(res.data[i])
         }
-        this.userTags = tmp_uesrTags
+        this.userTags = tmp_userTags
       })
     },
     getUserSubscribe() {
@@ -103,6 +105,15 @@ export default {
           tmp_userSubscribe.push(res.data[i])
         }
         this.userSubscribe = tmp_userSubscribe
+      })
+    },
+    getUserArticle() {
+      axios.get('http://fefubr.tk/api/content/article?user=' + this.$route.params.id).then((res) => {
+        let tmp_userArticle = []
+            for (let i = 0; i < res.data.length; ++i) {
+              tmp_userArticle.push(res.data[i])
+            }
+            this.userArticle = tmp_userArticle
       })
     },
     handleFileUpload() {
@@ -125,7 +136,7 @@ export default {
     this.getUserData()
   },
   watch: {
-    user() {
+    $route() {
       this.getUserData()
     }
   }
