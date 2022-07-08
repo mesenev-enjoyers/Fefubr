@@ -239,6 +239,10 @@ button{
   box-shadow: none !important;
 }
 
+.navbar-toggler:focus{
+  box-shadow: none;
+}
+
 .exit{
   padding-right: 10px;
 }
@@ -248,13 +252,16 @@ button{
     font-size: 35px;
   }
   button{
-    padding: 0;
+    padding: 0 0 10px 0;
   }
   .exit{
-    padding-top: 5px;
+    padding: 5px 5px 10px 0;
   }
   .btn{
     font-size: 20px;
+  }
+  .bg{
+    margin-bottom: 20px;
   }
 
 }
@@ -266,6 +273,8 @@ button{
   }
   .collapse{
     box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
+    border-radius: 10px;
+    padding: 10px;
 
   }
 
