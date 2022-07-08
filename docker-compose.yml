@@ -43,6 +43,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     container_name: frontend
+    image: frontend_image
     depends_on:
       - backend
     volumes:
