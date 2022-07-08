@@ -117,6 +117,7 @@ export default {
           tmp_uesrTags.push(res.data[i])
         }
         this.userTags = tmp_uesrTags
+        console.log('i was here(tags)')
       })
     },
     getUserSubscribe() {
@@ -126,6 +127,7 @@ export default {
           tmp_userSubscribe.push(res.data[i])
         }
         this.userSubscribe = tmp_userSubscribe
+        console.log('i was here(subs)')
       })
     },
     handleFileUpload() {
@@ -148,7 +150,7 @@ export default {
     this.getUserData()
   },
   watch: {
-    user() {
+    $route() {
       this.getUserData()
     }
   }
