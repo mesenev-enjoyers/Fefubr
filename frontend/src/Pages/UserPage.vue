@@ -54,16 +54,14 @@
       </div>
     </div>
     <p class="p-subs p-article">Cтатьи пользователя {{user.username}}:</p>
-    <div class="articles-div row row-cols-2">
-
-      <div class="article-one-div a1 col">
-        <p>d</p>
+    <div class="articles-div row row-cols-2 d-flex justify-content-between">
+      <div class="article-one-div col " v-for="article in userArticle" :key="article.id">
+        <p class="p-article-content">{{article.name}}</p>
+        <div class="button-read-div d-flex justify-content-center">
+          <button class="button-read" @click="$router.push('/post/' + article.id)">Читать</button>
+        </div>
       </div>
 
-      <div class="article-one-div a2 col">
-        <p>d</p>
-
-      </div>
     </div>
 
     </div>
@@ -200,6 +198,8 @@ export default {
 
 <style scoped>
 
+
+
 .container{
   margin-top: 40px;
   margin-bottom: 40px;
@@ -330,10 +330,58 @@ export default {
   margin-top: 20px;
 }
 
-
 .article-one-div{
-  border: red 1px solid;
+  border: #5F77BF 2px solid;
+  border-radius: 5px;
+  width: 45%;
+  padding: 0;
+  margin-left: 11px;
+  margin-right: 12px;
+  margin-top: 20px;
+  height: auto;
+  word-wrap: break-word;
 }
+
+
+.p-article-content{
+  padding: 10px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.button-read{
+  width: 100px;
+  height: 30px;
+  color: black;
+  background-color:white;
+  border-width: 2px;
+  border-color: #5F77BF;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.button-read:hover{
+  width: 100px;
+  height: 30px;
+  color: white;
+  background-color: #5F77BF;
+  border-color: #5F77BF;
+}
+
+.button-read:active {
+  width: 100px;
+  height: 30px;
+  color: black;
+  background-color:white;
+  border-width: 2px;
+  border-color: #5F77BF;
+}
+
 
 
 

@@ -15,7 +15,6 @@ export default {
       isAuthorized: localStorage.getItem('token') != null,
       posts: [],
       isPostsLoading: false,
-      selectedSort: 'time',
     }
   },
   methods: {
