@@ -262,6 +262,7 @@ a{
   max-height: 30px;
   height: 30px;
   margin-bottom: auto;
+  cursor: pointer;
 }
 .comments {
   margin-top: 15px;
@@ -318,6 +319,12 @@ a{
     max-width: 450px;
     max-height: 500px;
   }
+}
 
+@media (max-width: 550px){
+  img{
+    max-width: 300px;
+    max-height: 350px;
+  }
 }
 </style>

@@ -242,6 +242,7 @@ button{
     border-radius: 10px;
     padding: 10px;
     margin-top: 0;
+    margin-left: 10px;
   }
 
   .navbar{
@@ -253,8 +254,15 @@ button{
     padding-top: 0;
   }
 
+}
 
-
+@media (max-width: 550px){
+  .navbar-brand{
+    margin-left: 15px;
+  }
+  .navbar-toggler{
+    margin-right: 15px;
+  }
 }
 
 

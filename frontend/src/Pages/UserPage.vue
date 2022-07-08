@@ -231,7 +231,8 @@ export default {
   font-size: 30px;
   line-height: 30px;
   margin-right: 30px;
-  color: #000000;
+  color: #14A61A;
+
 }
 
 .change-btn-div{
@@ -393,6 +394,11 @@ export default {
   }
 }
 
+@media (max-width: 550px){
+  .d1{
+    margin-right: 100px;
+  }
+}
 
 
 

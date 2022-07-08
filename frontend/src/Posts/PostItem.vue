@@ -257,8 +257,9 @@ a{
     max-width: 350px;
     max-height: 400px;
   }
-
 }
+
+
 
 
 

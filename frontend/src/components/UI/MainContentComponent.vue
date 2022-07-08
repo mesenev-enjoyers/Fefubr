@@ -14,11 +14,19 @@
                 <p class="p-tag">Тэг: {{selectedTag}} </p>
               </div>
               <slot></slot>
-              <div v-for="tag in allTags" :key="tag.id">
-                <div class="name-rate d-inline-flex">
-                  <a @click="$router.push('/tag/' + tag.id)">{{tag.name}}</a>
+              <p class="p-tags-menu">Навигация по тэгам:</p>
+                <div class="name-rate subs-elements-div row row-cols-3">
+                  <a class="sub-element" v-for="tag in allTags" :key="tag.id" @click="$router.push('/tag/' + tag.id)">{{tag.name}}</a>
                 </div>
-              </div>
+
+
+
+
+<!--              <div v-for="tag in allTags" :key="tag.id">-->
+<!--                <div class="name-rate d-inline-flex">-->
+<!--                  <a @click="$router.push('/tag/' + tag.id)">{{tag.name}}</a>-->
+<!--                </div>-->
+<!--              </div>-->
             </div>
           </div>
 
@@ -81,6 +89,16 @@ export default {
 
 <style scoped>
 
+.sub-element{
+  cursor: pointer;
+  text-decoration: none;
+  color: #5F77BF;
+  width: auto;
+}
+
+.sub-element:hover{
+  color: black;
+}
 
 .container-sun{
   margin-bottom: 50px;
@@ -112,7 +130,7 @@ export default {
 
 .p-tag{
   margin: 0;
-  padding: 8px 0 0 0;
+  /*padding: 8px 0 0 0;*/
 }
 
 .p-tag-div{
@@ -137,7 +155,16 @@ export default {
   height: 550px;
   position: sticky;
   top: 82px
+}
 
+.p-tags-menu{
+  margin-bottom: 0;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 48px;
+  color: #000000;
 }
 
 @media (max-width: 1100px){
