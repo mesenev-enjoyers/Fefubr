@@ -1,5 +1,7 @@
 <template>
-    <button class="btn btn-primary">Войти</button>
+    <button class="btn btn-primary">
+      <slot></slot>
+    </button>
 </template>
 
 <script>

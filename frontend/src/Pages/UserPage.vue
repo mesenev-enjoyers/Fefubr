@@ -89,11 +89,11 @@ export default {
     },
     getUserTags() {
       axios.get('http://fefubr.tk/api/users/tag?user=' + this.$route.params.id).then((res) => {
-        let tmp_uesrTags = []
+        let tmp_userTags = []
         for (let i = 0; i < res.data.length; ++i) {
-          tmp_uesrTags.push(res.data[i])
+          tmp_userTags.push(res.data[i])
         }
-        this.userTags = tmp_uesrTags
+        this.userTags = tmp_userTags
       })
     },
     getUserSubscribe() {
@@ -125,7 +125,7 @@ export default {
     this.getUserData()
   },
   watch: {
-    user() {
+    $route() {
       this.getUserData()
     }
   }
