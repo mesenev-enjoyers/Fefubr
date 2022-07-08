@@ -57,7 +57,7 @@ def delete_user(message):
 
 #  Пофиксить ссылку!
 def send_article(chat_id, article, username):
-    bot.send_message(chat_id, f'Вышла новая статья от пользователя {username} (fefubr.tk/post/{article["id"] })')
+    bot.send_message(chat_id, f'Вышла новая статья от пользователя {username} (http://fefubr.tk/?#/post/{article["id"] })')
 
 
 def run_bot():
