@@ -36,7 +36,6 @@
 
 <script>
 import axios from "axios";
-// import PostList from "@/Posts/PostList";
 import NavBar from "@/components/UI/NavBar";
 import TopUsers from "@/components/UI/TopUsers";
 import PostItem from "@/Posts/PostItem";

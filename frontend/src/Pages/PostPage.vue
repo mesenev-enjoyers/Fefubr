@@ -21,7 +21,6 @@
       <div class = " tags d-inline-flex">
         <a class="tagg " href="#" v-for = "tag in tags" :key="tag.id">{{tag.name}}⠀</a>
       </div>
-      <!--      <div v-if="post.is_liked">Лайкнут{{post.rating}}</div>-->
       <div>
         <button class="button-liked" v-if="post.is_liked">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning-charge svg-liked" viewBox="0 0 16 16">
@@ -116,8 +115,7 @@ export default {
         content: this.commentContent
       }).then(() => {
         this.$router.go(0)
-      })
-          .catch('Com isn`t here')
+      }).catch('Com isn`t here')
     }
   },
   mounted() {
