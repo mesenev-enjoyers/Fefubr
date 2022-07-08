@@ -22,7 +22,7 @@
           </li>
           <li class="nav-item px-lg-3">
             <button class="btn block" v-if="isAuthorized" @click="$router.push('/chats')" >Рассылка</button>
-            <button class="btn block" v-else @click="$router.push('/login')" >Общение</button>
+            <button class="btn block" v-else @click="$router.push('/login')" >Рассылка</button>
           </li>
         </ul>
         <div class="second-content-navbar">
