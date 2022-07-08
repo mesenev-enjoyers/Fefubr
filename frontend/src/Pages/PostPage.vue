@@ -19,7 +19,7 @@
       <div class = "img" v-if="post.picture != null"><img :src="post.picture"></div>
       <div class="main-content" >{{post.content}}</div>
       <div class = " tags d-inline-flex">
-        <a class="tagg " href="#" v-for = "tag in tags" :key="tag.id">{{tag.name}}⠀</a>
+        <a class="tagg "  v-for = "tag in tags" :key="tag.id" @click="$router.push('/tag/' + tag.id)" >{{tag.name}}</a>
       </div>
       <div>
         <button class="button-liked" v-if="post.is_liked" @click="removeLike">
@@ -102,7 +102,7 @@ export default {
       })
     },
     getCommentCreatorAvatar(comment) {
-      return ('http://fefubr.tk/media/' + comment.creator_avatar)
+      return ('http://fefubr.tk/api/media/' + comment.creator_avatar)
     },
     getNormalDate(comment) {
       return (comment.date.substring(0,10) + ' в ' + comment.date.substring(11,16))
