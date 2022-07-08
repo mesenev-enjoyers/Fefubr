@@ -92,6 +92,7 @@ export default {
 }
 </script>
 
+
 <style scoped>
 
 .mainDiv {
@@ -156,6 +157,15 @@ export default {
   border-width: 2px;
   border-color: #5F77BF;
 }
+
+.btn:focus {
+  border-width: 2px;
+  border-color: #5F77BF;
+  background-color: #5F77BF;
+  color: white;
+  box-shadow: none !important;
+}
+
 
 .downrow-first-content{
   margin: 25px 0 0 0;
