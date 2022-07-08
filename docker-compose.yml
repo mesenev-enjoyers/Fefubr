@@ -1,0 +1,51 @@
+version: '3.9'
+
+services:
+  redis:
+    restart: always
+    image: "redis:alpine"
+    hostname: redis
+    container_name: redis
+    ports:
+      - '6379:6379'
+
+  backend:
+    restart: always
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: bash -c "gunicorn --chdir youtu6e youtu6e.wsgi:application --bind 0.0.0.0:8000"
+    container_name: backend
+    image: backend_image
+    volumes:
+      - ./backend:/backend
+    ports:
+      - '8000:8000'
+    links:
+      - redis
+    depends_on:
+      - redis
+
+  db:
+    image: nouchka/sqlite3
+    ports:
+      - '3306:3306'
+    env_file:
+      - "backend/db.env"
+    restart: always
+    volumes:
+      - ./db_django:/var/lib/mysql
+
+
+  frontend:
+    restart: always
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend/nginx:/etc/nginx/conf.d
+    ports:
+      - 80:80
