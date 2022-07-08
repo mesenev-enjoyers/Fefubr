@@ -80,10 +80,10 @@ export default {
     CheckUser() {
       if (this.isAuthorized) {
         axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
-        this.checkSubscriptionTo()
         axios.get('http://fefubr.tk/api/users/current').then((res) => {
           this.isCurrentUser = (res.data.id == this.$route.params.id)
           this.currentUserId = res.data.id
+          this.checkSubscriptionTo()
         })
       }
     },
@@ -126,6 +126,7 @@ export default {
     },
 
     checkSubscriptionTo() {
+      console.log(this.currentUserId)
       axios.get('http://fefubr.tk/api/users/subscribe?user=' + this.currentUserId).then((res) => { //Подписки чела, который першел на страницу
         let currentUserSubs = res.data
         let check = false
@@ -140,18 +141,19 @@ export default {
       })
     },
     subscribeToUser() {
-      axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
+      if (this.isAuthorized)
+        axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
       axios.post('http://fefubr.tk/api/users/subscribe/', {
         'user': this.currentUserId,
         'subscribe': this.$route.params.id
       }).then(() => {
-        this.isSubscribeTo = true
+        this.$router.go(0)
       })
     },
     unsubscribeFromUser() {
       axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
       axios.delete('http://fefubr.tk/api/users/subscribe/' + this.subscribeId).then(() => {
-        this.isSubscribeTo = false
+        this.$router.go(0)
       })
     },
 

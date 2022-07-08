@@ -1,13 +1,19 @@
 <template>
   <div class="root">
-    <h2>Топ пользователей</h2>
-    <div  v-for="user in TopUsers" :key="user.id">
-      <div class="user d-inline-flex p-2">
-        <img class="avavav" :src="user.avatar" @click="$router.push('/user/' + user.id)">
-        <div class="name-rate d-inline-flex ">
-          <div class="name">{{user.username}} </div>
-          <div class="rate"> {{user.rating}}</div>
+    <div><h2>Топ пользователей</h2></div>
+      <div  v-for="user in TopUsers" :key="user.id">
+        <div class="user d-inline-flex p-2">
+          <img class="avavav" :src="user.avatar" @click="$router.push('/user/' + user.id)">
+          <div class="name-rate d-inline-flex ">
+            <div class="name">{{user.username}} </div>
+            <div class="rate"> {{user.rating}}</div>
+          </div>
         </div>
+      </div>
+    <div><h2>Все доступные Тэги: </h2></div>
+    <div v-for="tag in allTags" :key="tag.id">
+      <div class="name-rate d-inline-flex">
+        <a @click="$router.push('/tag/' + tag.id)">{{tag.name}}</a>
       </div>
     </div>
   </div>
@@ -20,12 +26,26 @@ export default {
   data() {
     return {
       TopUsers: [],
+      allTags: []
+    }
+  },
+  methods: {
+    getTopUsers() {
+      axios.get('http://fefubr.tk/api/users/?top=5').then((res) =>{
+        this.TopUsers = res.data
+      })
+    },
+    getAllTags() {
+      axios.get('http://fefubr.tk/api/content/tag').then((res) => {
+        this.allTags = res.data
+      }).catch((error) => {
+        console.log(error)
+      })
     }
   },
   mounted() {
-    axios.get('http://fefubr.tk/api/users/?top=5').then((res) =>{
-      this.TopUsers = res.data
-    })
+    this.getTopUsers()
+    this.getAllTags()
   }
 }
 </script>
