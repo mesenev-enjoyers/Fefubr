@@ -13,12 +13,17 @@
               <div class="p-tag-div col-3">
                 <p class="p-tag">Тэги: {{selectedTag}} </p>
               </div>
+              <div class="btn-2-div">
+                <button class="btn-2 " >Подписаться</button>
+              </div>
               <div class="btns-div col-9">
-                <button class="btn btn-primary" >По времени</button>
-                <button class="btn btn-primary" >По рейтингу</button>
+                <button class="btn " >По времени</button>
+                <button class="btn " >По рейтингу</button>
               </div>
             </div>
+
           </div>
+
           <div class="row downrow-first-content  rounded-1"  v-for="post in posts"  :key = "post.id">
             <post-item  :post = "post"/>
           </div>
@@ -60,6 +65,11 @@ export default {
 
 <style scoped>
 
+.btns-div{
+  width: auto;
+}
+
+
 .mainDiv {
   margin: 30px 0 0 0;
 }
@@ -74,20 +84,30 @@ export default {
   margin: 0;
   padding: 0;
   width: 97%;
-  height: 60px;
+  height: auto;
   box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
   /*background-color: fuchsia;*/
 }
 
 .content-uprow{
   margin: 0;
-  padding: 10px 0 0 0 ;
+  padding: 10px 0 10px 0 ;
 }
 
 .p-tag{
   margin: 0;
   padding: 8px 0 0 0;
+}
+
+.p-tag-div{
   width: auto;
+}
+
+.btn-2-div{
+  width: auto;
+  padding-top: 5px;
+  padding-left: 0;
+  margin-right: 50px;
 }
 
 .btns-div{
@@ -124,11 +144,30 @@ export default {
 }
 
 .btn:focus {
+  box-shadow: none !important;
+}
+
+.btn-2{
+  width: 120px;
+  height: 30px;
+  color: black;
+  background-color:white;
   border-width: 2px;
   border-color: #5F77BF;
-  background-color: #5F77BF;
+  border-radius: 5px;
+}
+
+.btn-2:hover{
   color: white;
-  box-shadow: none !important;
+  background-color: #5F77BF;
+  border-color: #5F77BF;
+}
+
+.btn-2:active {
+  color: black;
+  background-color:white;
+  border-width: 2px;
+  border-color: #5F77BF;
 }
 
 .downrow-first-content{
@@ -137,8 +176,6 @@ export default {
   width: 97%;
   box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
   height: auto;
-  /*background-color: forestgreen;*/
-
 }
 
 .div-second-content{
@@ -150,6 +187,19 @@ export default {
   top: 82px
 
 }
+
+@media (max-width: 1280px){
+  .btn-2-div{
+    margin-bottom: 10px;
+  }
+  .btns-div{
+    padding: 0 0 0 12px;
+  }
+
+
+}
+
+
 
 
 </style>

@@ -53,7 +53,20 @@
         </div>
       </div>
     </div>
-  </div>
+    <p class="p-subs p-article">Cтатьи пользователя {{user.username}}:</p>
+    <div class="articles-div row row-cols-2">
+
+      <div class="article-one-div a1 col">
+        <p>d</p>
+      </div>
+
+      <div class="article-one-div a2 col">
+        <p>d</p>
+
+      </div>
+    </div>
+
+    </div>
 </template>
 
 <script>
@@ -307,6 +320,19 @@ export default {
   text-decoration: none;
   color: #5F77BF;
   cursor: pointer;
+}
+
+.p-article{
+  margin-top: 40px;
+}
+
+.articles-div{
+  margin-top: 20px;
+}
+
+
+.article-one-div{
+  border: red 1px solid;
 }
 
 
