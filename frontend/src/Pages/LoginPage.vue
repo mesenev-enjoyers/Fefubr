@@ -196,6 +196,10 @@ export default {
 
 }
 
+@media screen and (max-width: 550px) {
+  body { zoom: 100%; }
+}
+
 
 
 </style>
