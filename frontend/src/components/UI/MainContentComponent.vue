@@ -18,15 +18,6 @@
                 <div class="name-rate subs-elements-div row row-cols-3">
                   <a class="sub-element" v-for="tag in allTags" :key="tag.id" @click="$router.push('/tag/' + tag.id)">{{tag.name}}</a>
                 </div>
-
-
-
-
-<!--              <div v-for="tag in allTags" :key="tag.id">-->
-<!--                <div class="name-rate d-inline-flex">-->
-<!--                  <a @click="$router.push('/tag/' + tag.id)">{{tag.name}}</a>-->
-<!--                </div>-->
-<!--              </div>-->
             </div>
           </div>
 
@@ -113,14 +104,12 @@ export default {
   padding: 0;
 }
 
-
 .uprow-first-content{
   margin: 0;
   padding: 0;
   width: 97%;
   height: auto;
   box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
-  /*background-color: fuchsia;*/
 }
 
 .content-uprow{
@@ -130,15 +119,11 @@ export default {
 
 .p-tag{
   margin: 0;
-  /*padding: 8px 0 0 0;*/
 }
 
 .p-tag-div{
   width: auto;
 }
-
-
-
 
 .downrow-first-content{
   margin: 25px 0 0 0;
@@ -168,13 +153,6 @@ export default {
 }
 
 @media (max-width: 1100px){
-  /*.btn-2-div{*/
-  /*  margin-bottom: 10px;*/
-  /*}*/
-  /*.btns-div{*/
-  /*  padding: 0 0 0 12px;*/
-  /*}*/
-  /*.container-sun{background-color: red}*/
   .top-users-div{
     display: none;
   }
@@ -193,8 +171,5 @@ export default {
   }
 
 }
-
-
-
 
 </style>

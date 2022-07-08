@@ -118,12 +118,6 @@ svg:hover{
 }
 
 
-
-.logo-div{
-  padding: 10px 0 10px 0;
-  pointer-events: none;
-}
-
 .logo{
   font-family: 'Inter';
   text-transform: uppercase;
@@ -141,10 +135,6 @@ svg:hover{
   padding-left: 0;
 
 }
-
-/*.main-div button{*/
-/*  padding-right: 40px;*/
-/*}*/
 
 .second-div{
   /*padding-top: 20px;*/

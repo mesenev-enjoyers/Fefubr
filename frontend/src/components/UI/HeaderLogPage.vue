@@ -15,18 +15,6 @@
     </div>
   </nav>
 
-<!--  <div class="bg">-->
-<!--    <div class="container">-->
-<!--      <div class="navbar__btns row">-->
-<!--        <div class="logo-div col-2">-->
-<!--          <a class="logo block" href="#">Fefubr</a>-->
-<!--        </div>-->
-<!--        <div class="logo-div col-2">-->
-<!--          <p class="account block">Аккаунт</p>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
 </template>
 
 

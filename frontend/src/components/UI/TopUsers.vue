@@ -2,15 +2,6 @@
   <div class="root container">
     <div><h2>Топ пользователей</h2></div>
       <div  v-for="user in TopUsers" :key="user.id">
-<!--        <table>-->
-<!--          <tbody>-->
-<!--          <tr>-->
-<!--            <td class="align-baseline"><img class="avavav" :src="user.avatar" @click="$router.push('/user/' + user.id)"></td>-->
-<!--            <td class="align-middle user-name">{{user.username}}</td>-->
-<!--            <td class="align-middle user-rate">Рейтинг: {{user.rating}}</td>-->
-<!--          </tr>-->
-<!--          </tbody>-->
-<!--        </table>-->
         <div class="user d-inline-flex p-2">
           <img class="avavav" :src="user.avatar" @click="$router.push('/user/' + user.id)">
           <div class="name-rate d-inline-flex ">
