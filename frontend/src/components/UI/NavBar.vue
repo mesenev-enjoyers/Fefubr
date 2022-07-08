@@ -133,6 +133,7 @@ export default {
 
 
 
+
 .navbar-collapse{
   background-color: white;
 
@@ -216,7 +217,7 @@ button{
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
-  font-size: 26px;
+  font-size: 25px;
   line-height: 31px;
   color: black;
   text-decoration: none;
@@ -238,9 +239,13 @@ button{
   box-shadow: none !important;
 }
 
+.exit{
+  padding-right: 10px;
+}
+
 @media (max-width: 1350px){
   .logo{
-    font-size: 40px;
+    font-size: 35px;
   }
   button{
     padding: 0;
@@ -248,6 +253,22 @@ button{
   .exit{
     padding-top: 5px;
   }
+  .btn{
+    font-size: 20px;
+  }
+
+}
+
+@media (max-width: 1000px){
+
+  .second-content-navbar{
+    width: 50%;
+  }
+  .collapse{
+    box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
+
+  }
+
 
 }
 
