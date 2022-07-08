@@ -245,7 +245,8 @@ button{
   }
 
   .navbar{
-    height: 50px;
+    height: 55px;
+    padding-top: 0;
   }
 
   .navbar-brand{
