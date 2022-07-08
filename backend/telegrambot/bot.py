@@ -54,6 +54,12 @@ def delete_user(message):
     user.save()
     bot.send_message(message.chat.id, "Вы отписались от уведомлений!")
 
+
+#  Пофиксить ссылку!
+def send_article(chat_id, article, username):
+    bot.send_message(chat_id, f'Вышла новая статья от пользователя {username} (fefubr.tk/post/{article["id"] })')
+
+
 def run_bot():
     try:
         print("TelegramBot is ready")
