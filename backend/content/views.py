@@ -7,11 +7,13 @@ from .models import *
 from .likes import ContentAPIMixin
 
 
+
+
 class ArticleListView(generics.ListCreateAPIView):
     serializer_class = ArticleSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-    def get_queryset(self):
+    def get_queryset(self,*args, **kwargs):
         query = Article.objects.all()
         tag = self.request.query_params.get('tag')  # гет параметры
         user = self.request.query_params.get('user')

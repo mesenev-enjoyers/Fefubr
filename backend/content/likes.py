@@ -1,6 +1,8 @@
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page  # Cache - то есть  бабки
 from rest_framework.response import Response
 from rest_framework import mixins
 from rest_framework.generics import GenericAPIView
@@ -71,6 +73,7 @@ class ContentAPIMixin(mixins.UpdateModelMixin,
 
         return Response(serializer.data)
 
+    @method_decorator(cache_page(60 * 60))
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
 

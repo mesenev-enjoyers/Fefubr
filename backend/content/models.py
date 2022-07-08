@@ -1,6 +1,5 @@
 from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
-
 from content.likes import Like
 from users.models import CustomUser
 
@@ -27,6 +26,7 @@ class Article(models.Model):
 
     class Meta:
         ordering =['-date', '-rating']
+
 
 
 class Comment(models.Model):

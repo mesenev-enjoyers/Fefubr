@@ -29,29 +29,10 @@ export default {
       this.posts = response.data
       this.isPostsLoading = false
     },
-
-    timeSort() {
-      this.selectedSort = "date"
-    },
-    ratingSort() {
-      this.selectedSort = "rating"
-    }
-
   },
-
   mounted() {
     this.fetchPosts()
   },
-
-  watch: {
-    selectedSort(newValue) {
-      console.log(newValue)
-      this.posts.sort(function (post1, post2) {
-        if (post1[newValue] < post2[newValue])
-          return 1
-      })
-    },
-  }
 }
 </script>
 
