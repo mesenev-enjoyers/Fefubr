@@ -49,7 +49,7 @@
       <div class="user-subs-div d2 col">
         <p class="p-subs">Тэги:</p>
         <div class="subs-elements-div row row-cols-3">
-          <a  class="sub-element col"  v-for="tag in userTags" :key="tag.id" @click="$router.push('/tag/' + tag.id)">{{tag.tag_name}}</a>
+          <a  class="sub-element col"  v-for="tag in userTags" :key="tag.id" @click="$router.push('/tag/' + tag.tag_subscribe)">{{tag.tag_name}}</a>
         </div>
       </div>
     </div>
