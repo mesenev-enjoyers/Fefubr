@@ -39,7 +39,7 @@
     <div class="container" style="margin-top: 15px"><p class="p-com">Комментарии:</p>
       <div class="comments" v-for="comment in comments" :key="comment.id">
         <div class="avaCommentCreator">
-          <img :src="getCommentCreatorAvatar(comment)"> <strong>{{comment.creator_name}}</strong> {{getNormalDate(comment)}}
+          <img :src="getCommentCreatorAvatar(comment)" @click="$router.push('/user/' + comment.creator)"> <strong>{{comment.creator_name}}</strong> {{getNormalDate(comment)}}
         </div>
         <div>{{comment.content}}</div>
       </div>

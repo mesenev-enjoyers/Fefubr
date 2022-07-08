@@ -41,8 +41,8 @@ export default {
       if (this.isAuthorized) {
         axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
         this.getCurrentUser()
-        this.getCurrentTag()
       }
+      this.getCurrentTag()
       axios.get('http://fefubr.tk/api/content/article?tag=' + this.$route.params.id).then((response) => {
         this.posts = response.data
       })
