@@ -381,6 +381,17 @@ export default {
   border-color: #5F77BF;
 }
 
+@media (max-width: 1100px){
+  .user-name{
+    font-size: 25px;
+
+  }
+  .user-rate{
+    font-size: 15px;
+
+  }
+}
+
 
 
 

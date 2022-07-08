@@ -312,4 +312,12 @@ a{
   font-weight: bold;
   font-size: 30px;
 }
+
+@media (max-width: 1100px){
+  img{
+    max-width: 450px;
+    max-height: 500px;
+  }
+
+}
 </style>

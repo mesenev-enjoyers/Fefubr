@@ -4,7 +4,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
   <nav-bar></nav-bar>
-  <div class="container">
+  <div class="container container-sun">
     <div class="row mainDiv ">
       <div class="col-9 div-first-content ">
         <div class="col col-first-content ">
@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3 div-second-content rounded-1">
+      <div class="top-users-div col-3 div-second-content rounded-1">
         <top-users></top-users>
       </div>
     </div>
@@ -82,6 +82,9 @@ export default {
 <style scoped>
 
 
+.container-sun{
+  margin-bottom: 50px;
+}
 
 .mainDiv {
   margin: 30px 0 0 0;
@@ -131,20 +134,36 @@ export default {
   margin: 0;
   padding: 0;
   box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
-  height: 800px;
+  height: 550px;
   position: sticky;
   top: 82px
 
 }
 
-@media (max-width: 1280px){
-  .btn-2-div{
-    margin-bottom: 10px;
+@media (max-width: 1100px){
+  /*.btn-2-div{*/
+  /*  margin-bottom: 10px;*/
+  /*}*/
+  /*.btns-div{*/
+  /*  padding: 0 0 0 12px;*/
+  /*}*/
+  /*.container-sun{background-color: red}*/
+  .top-users-div{
+    display: none;
   }
-  .btns-div{
-    padding: 0 0 0 12px;
+  .div-first-content{
+    width: 100%;
   }
-
+  .uprow-first-content{
+    width: 100%;
+  }
+  .downrow-first-content{
+    width: 100%;
+  }
+  post-item img{
+    width: 10px;
+    height: 10px;
+  }
 
 }
 
