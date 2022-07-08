@@ -41,6 +41,12 @@ export default {
     TopUsers,
     NavBar,
   },
+  props: {
+    posts: {
+      type: Object,
+      required: true
+    }
+  }
 }
 
 </script>

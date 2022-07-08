@@ -1,62 +1,26 @@
 <template>
-  <!--  <nav-bar></nav-bar>-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
-  <!--  <div class="content">-->
-  <!--    <div class="mainContent">-->
-  <!--      <h1 v-if="isPostsLoading" style="text-align: center; margin-top: 20%">Идёт загрузка...</h1>-->
-  <!--      <div v-else>-->
-  <!--        <div v-if="posts.length > 0">-->
-  <!--           <post-list :posts="posts"/>-->
-  <!--        </div>-->
-  <!--        <h1 v-else style="text-align: center; margin-top: 20%">Постов нет :(</h1>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--    <div class="sideBar">-->
-  <!--      <top-users></top-users>-->
-  <!--    </div>-->
-  <!--  </div>-->
+  <main-content-component :posts="posts"></main-content-component>
 
-
-
-
-  <nav-bar></nav-bar>
-  <div class="container">
-    <div class="row mainDiv ">
-      <div class="col-9 div-first-content ">
-        <div class="col col-first-content ">
-          <div class="row uprow-first-content  rounded-1">
-            <p>dddd</p>
-          </div>
-          <div class="row downrow-first-content  rounded-1">
-            <p>22222</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-3 div-second-content rounded-1">
-      </div>
-    </div>
-  </div>
 </template>
 
 <script>
 import axios from "axios";
-// import PostList from "@/Posts/PostList";
-import NavBar from "@/components/UI/NavBar";
-// import TopUsers from "@/components/UI/TopUsers";
+import MainContentComponent from "@/components/UI/MainContentComponent";
+
 export default {
   components: {
-    // TopUsers,
-    NavBar,
-    // PostList,
+    MainContentComponent
+
   },
   name: "MainPage",
   data() {
     return {
       isAuthorized: localStorage.getItem('token') != null,
-      User: {
-        name: '',
-        rating: '',
-      },
       posts: [],
       isPostsLoading: false,
     }
@@ -84,64 +48,5 @@ export default {
 </script>
 
 <style scoped>
-
-.mainDiv {
-  margin: 30px 0 0 0;
-  position: relative;
-
-}
-.div-first-content{
-  margin:0;
-  padding: 0;
-  /*border: orangered 1px solid;*/
-}
-
-
-.uprow-first-content{
-  margin: 0;
-  padding: 0;
-  width: 97%;
-
-  box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
-  background-color: fuchsia;
-}
-
-.downrow-first-content{
-  margin: 25px 0 0 0;
-  padding: 0;
-  width: 97%;
-
-  box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
-  height: 200px;
-  background-color: forestgreen;
-
-}
-
-.div-second-content{
-  margin: 0;
-  padding: 0;
-  box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
-  background-color: aqua;
-  height: 500px;
-  position: sticky;
-  top: 82px
-}
-
-/*.content {*/
-/*  display: flex;*/
-/*}*/
-/*.mainContent {*/
-/*  width: 70%;*/
-/*  text-align: center;*/
-/*  border: 1px solid black;*/
-/*  box-shadow: -1px -1px 5px gray, 1px 1px 5px gray;*/
-/*}*/
-/*.sideBar {*/
-/*  width: 30%;*/
-/*}*/
-
-/*......................*/
-
-
 
 </style>
