@@ -127,6 +127,10 @@ export default {
   border-color: #5F77BF;
 }
 
+.btn:focus {
+  box-shadow: none !important;
+}
+
 
 .p-header{
   width: auto;

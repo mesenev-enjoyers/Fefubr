@@ -150,6 +150,7 @@ export default {
   background-color: #5F77BF;
   border-color: #5F77BF;
 }
+
 .btn:active {
   width: 300px;
   height: 54px;
@@ -159,6 +160,9 @@ export default {
   border-color: #5F77BF;
 }
 
+.btn:focus {
+  box-shadow: none !important;
+}
 
 .p-header{
   width: auto;
