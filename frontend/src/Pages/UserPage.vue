@@ -112,12 +112,11 @@ export default {
     },
     getUserTags() {
       axios.get('http://fefubr.tk/api/users/tag?user=' + this.$route.params.id).then((res) => {
-        let tmp_uesrTags = []
+        let tmp_userTags = []
         for (let i = 0; i < res.data.length; ++i) {
-          tmp_uesrTags.push(res.data[i])
+          tmp_userTags.push(res.data[i])
         }
-        this.userTags = tmp_uesrTags
-        console.log('i was here(tags)')
+        this.userTags = tmp_userTags
       })
     },
     getUserSubscribe() {
@@ -127,7 +126,6 @@ export default {
           tmp_userSubscribe.push(res.data[i])
         }
         this.userSubscribe = tmp_userSubscribe
-        console.log('i was here(subs)')
       })
     },
     handleFileUpload() {
