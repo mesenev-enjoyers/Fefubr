@@ -247,6 +247,8 @@ button{
   padding-right: 10px;
 }
 
+
+
 @media (max-width: 1350px){
   .logo{
     font-size: 35px;
@@ -263,10 +265,13 @@ button{
   .bg{
     margin-bottom: 20px;
   }
+  .navbar-nav{
+    padding-top: 10px;
+  }
 
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1001px){
 
   .second-content-navbar{
     width: 50%;
@@ -275,8 +280,8 @@ button{
     box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
     border-radius: 10px;
     padding: 10px;
-
   }
+
 
 
 }
