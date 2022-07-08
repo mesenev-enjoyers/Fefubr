@@ -182,6 +182,10 @@ button{
 
 }
 
+.btn:focus {
+  box-shadow: none !important;
+}
+
 /*дизайн кнопок + эффект*/
 
 

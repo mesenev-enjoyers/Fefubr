@@ -251,6 +251,14 @@ a{
   border-color: #5F77BF;
 }
 
+.btn:focus {
+  border-width: 2px;
+  border-color: #5F77BF;
+  background-color: #5F77BF;
+  color: white;
+  box-shadow: none !important;
+}
+
 .avavav{
   cursor: pointer;
 }
