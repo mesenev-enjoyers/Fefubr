@@ -2,7 +2,7 @@
   <div class="container">
 
     <div class="creator d-inline-flex">
-      <img :src="creatorAvatar" @click="$router.push('/user/' + post.creator)" alt="">
+      <img class="avavav" :src="creatorAvatar" @click="$router.push('/user/' + post.creator)" alt="">
       <div class="creator-name">
         {{creatorName}}
       </div>
@@ -250,5 +250,11 @@ a{
   border-width: 2px;
   border-color: #5F77BF;
 }
+
+.avavav{
+  cursor: pointer;
+}
+
+
 
 </style>

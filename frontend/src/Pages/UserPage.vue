@@ -51,30 +51,7 @@
         </div>
       </div>
     </div>
-
   </div>
-  <!--    <div class="user d-inline-flex ">-->
-  <!--      <img class="avatar" :src="user.avatar">-->
-  <!--      <div class="user-name align-middle">-->
-  <!--        {{user.username}}-->
-  <!--      </div>-->
-  <!--      <div class="user-rate align-middle">-->
-  <!--        Рейтинг: {{user.rating}}-->
-  <!--      </div>-->
-  <!--    </div>-->
-
-  <!--  <nav-bar></nav-bar>-->
-  <!--  <div class="root">-->
-  <!--    <img :src="user.avatar">-->
-  <!--    <div v-if="isAuthorized && isCurrentUser">-->
-  <!--      <form @submit="changeAvatar">-->
-  <!--        <input type="file" ref="file" @input="handleFileUpload">-->
-  <!--        <button>Сменить</button>-->
-  <!--      </form>-->
-  <!--  </div>-->
-  <!--    <div v-else-if="isAuthorized">АВторизован, но не мой акк</div>-->
-  <!--    <div v-else>не авторизован</div>-->
-  <!--  </div>-->
 </template>
 
 <script>
