@@ -49,7 +49,7 @@
       <div class="user-subs-div d2 col">
         <p class="p-subs">Тэги:</p>
         <div class="subs-elements-div row row-cols-3">
-          <a  class="sub-element col" v-for="tag in userTags" :key="tag.id">{{tag.tag_name}}</a>
+          <a  class="sub-element col"  v-for="tag in userTags" :key="tag.id" @click="$router.push('/tag/' + tag.tag_subscribe)">{{tag.tag_name}}</a>
         </div>
       </div>
     </div>
@@ -137,7 +137,6 @@ export default {
     },
 
     checkSubscriptionTo() {
-      console.log(this.currentUserId)
       axios.get('http://fefubr.tk/api/users/subscribe?user=' + this.currentUserId).then((res) => { //Подписки чела, который першел на страницу
         let currentUserSubs = res.data
         let check = false
@@ -190,6 +189,7 @@ export default {
   },
   watch: {
     $route() {
+      this.CheckUser()
       this.getUserData()
     },
   }
@@ -231,7 +231,8 @@ export default {
   font-size: 30px;
   line-height: 30px;
   margin-right: 30px;
-  color: #000000;
+  color: #14A61A;
+
 }
 
 .change-btn-div{
@@ -382,6 +383,22 @@ export default {
   border-color: #5F77BF;
 }
 
+@media (max-width: 1100px){
+  .user-name{
+    font-size: 25px;
+
+  }
+  .user-rate{
+    font-size: 15px;
+
+  }
+}
+
+@media (max-width: 550px){
+  .d1{
+    margin-right: 100px;
+  }
+}
 
 
 

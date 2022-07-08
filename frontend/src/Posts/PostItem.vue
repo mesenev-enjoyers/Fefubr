@@ -252,6 +252,15 @@ a{
   cursor: pointer;
 }
 
+@media (max-width: 1100px){
+  img{
+    max-width: 350px;
+    max-height: 400px;
+  }
+}
+
+
+
 
 
 </style>

@@ -90,6 +90,11 @@ export default {
   methods: {
     createUser() {
       if (this.password !== this.passwordConfirm) {
+        alert("Ваши пароли не совпадают")
+        return
+      }
+      if (this.password.length <= 6) {
+        alert("Ваш пароль слишком короткий(минимум 6)")
         return
       }
       axios.post('http://fefubr.tk/api/auth/users/', {
@@ -106,7 +111,7 @@ export default {
           this.$router.push('/')
         })
       }).catch(function () {
-        console.log("error"); // FIXME
+        alert("Имя или email уже используется")
       })
     },
   }

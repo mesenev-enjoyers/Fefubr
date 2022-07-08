@@ -4,23 +4,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
   <nav-bar></nav-bar>
-  <div class="container">
+  <div class="container container-sun">
     <div class="row mainDiv ">
       <div class="col-9 div-first-content ">
         <div class="col col-first-content ">
           <div class="row uprow-first-content rounded-1 justify-content-center">
             <div class="row content-uprow">
               <div class="p-tag-div col-3">
-                <p class="p-tag">Тэги: {{selectedTag}} </p>
+                <p class="p-tag">Тэг: {{selectedTag}} </p>
               </div>
-              <div class="btn-2-div">
-                <button class="btn-2 " >Подписаться</button>
-              </div>
-              <div v-for="tag in allTags" :key="tag.id">
-                <div class="name-rate d-inline-flex">
-                  <a @click="$router.push('/tag/' + tag.id)">{{tag.name}}</a>
+              <slot></slot>
+              <p class="p-tags-menu">Навигация по тэгам:</p>
+                <div class="name-rate subs-elements-div row row-cols-3">
+                  <a class="sub-element" v-for="tag in allTags" :key="tag.id" @click="$router.push('/tag/' + tag.id)">{{tag.name}}</a>
                 </div>
-              </div>
+
+
+
+
+<!--              <div v-for="tag in allTags" :key="tag.id">-->
+<!--                <div class="name-rate d-inline-flex">-->
+<!--                  <a @click="$router.push('/tag/' + tag.id)">{{tag.name}}</a>-->
+<!--                </div>-->
+<!--              </div>-->
             </div>
           </div>
 
@@ -29,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3 div-second-content rounded-1">
+      <div class="top-users-div col-3 div-second-content rounded-1">
         <top-users></top-users>
       </div>
     </div>
@@ -83,10 +89,20 @@ export default {
 
 <style scoped>
 
-.btns-div{
+.sub-element{
+  cursor: pointer;
+  text-decoration: none;
+  color: #5F77BF;
   width: auto;
 }
 
+.sub-element:hover{
+  color: black;
+}
+
+.container-sun{
+  margin-bottom: 50px;
+}
 
 .mainDiv {
   margin: 30px 0 0 0;
@@ -114,79 +130,15 @@ export default {
 
 .p-tag{
   margin: 0;
-  padding: 8px 0 0 0;
+  /*padding: 8px 0 0 0;*/
 }
 
 .p-tag-div{
   width: auto;
 }
 
-.btn-2-div{
-  width: auto;
-  padding-top: 5px;
-  padding-left: 0;
-  margin-right: 50px;
-}
-
-.btns-div{
-  padding: 0 0 0 30px;
-}
 
 
-.btn{
-  width: 200px;
-  height: 40px;
-  padding: 2px 5px 5px 5px;
-  margin-right: 20px;
-  color: black;
-  background-color:white;
-  border-width: 2px;
-  border-color: #5F77BF;
-}
-
-.btn:hover{
-  width: 200px;
-  height: 40px;
-  color: white;
-  background-color: #5F77BF;
-  border-color: #5F77BF;
-}
-
-.btn:active {
-  width: 200px;
-  height: 40px;
-  color: black;
-  background-color:white;
-  border-width: 2px;
-  border-color: #5F77BF;
-}
-
-.btn:focus {
-  box-shadow: none !important;
-}
-
-.btn-2{
-  width: 120px;
-  height: 30px;
-  color: black;
-  background-color:white;
-  border-width: 2px;
-  border-color: #5F77BF;
-  border-radius: 5px;
-}
-
-.btn-2:hover{
-  color: white;
-  background-color: #5F77BF;
-  border-color: #5F77BF;
-}
-
-.btn-2:active {
-  color: black;
-  background-color:white;
-  border-width: 2px;
-  border-color: #5F77BF;
-}
 
 .downrow-first-content{
   margin: 25px 0 0 0;
@@ -200,20 +152,45 @@ export default {
   margin: 0;
   padding: 0;
   box-shadow: -1px -1px 5px rgb(191, 191, 191), 1px 1px 5px rgb(191, 191, 191);
-  height: 800px;
+  height: 550px;
   position: sticky;
   top: 82px
-
 }
 
-@media (max-width: 1280px){
-  .btn-2-div{
-    margin-bottom: 10px;
-  }
-  .btns-div{
-    padding: 0 0 0 12px;
-  }
+.p-tags-menu{
+  margin-bottom: 0;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 48px;
+  color: #000000;
+}
 
+@media (max-width: 1100px){
+  /*.btn-2-div{*/
+  /*  margin-bottom: 10px;*/
+  /*}*/
+  /*.btns-div{*/
+  /*  padding: 0 0 0 12px;*/
+  /*}*/
+  /*.container-sun{background-color: red}*/
+  .top-users-div{
+    display: none;
+  }
+  .div-first-content{
+    width: 100%;
+  }
+  .uprow-first-content{
+    width: 100%;
+  }
+  .downrow-first-content{
+    width: 100%;
+  }
+  post-item img{
+    width: 10px;
+    height: 10px;
+  }
 
 }
 

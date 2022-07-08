@@ -39,7 +39,7 @@
     <div class="container" style="margin-top: 15px"><p class="p-com">Комментарии:</p>
       <div class="comments" v-for="comment in comments" :key="comment.id">
         <div class="avaCommentCreator">
-          <img :src="getCommentCreatorAvatar(comment)"> <strong>{{comment.creator_name}}</strong> {{getNormalDate(comment)}}
+          <img :src="getCommentCreatorAvatar(comment)" @click="$router.push('/user/' + comment.creator)"> <strong>{{comment.creator_name}}</strong> {{getNormalDate(comment)}}
         </div>
         <div>{{comment.content}}</div>
       </div>
@@ -262,6 +262,7 @@ a{
   max-height: 30px;
   height: 30px;
   margin-bottom: auto;
+  cursor: pointer;
 }
 .comments {
   margin-top: 15px;
@@ -311,5 +312,19 @@ a{
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
+}
+
+@media (max-width: 1100px){
+  img{
+    max-width: 450px;
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 550px){
+  img{
+    max-width: 300px;
+    max-height: 350px;
+  }
 }
 </style>

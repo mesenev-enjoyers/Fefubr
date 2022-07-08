@@ -35,6 +35,15 @@ services:
     restart: always
     volumes:
       - ./db_django:/var/lib/mysql
+      
+  telegrambot:
+    build: .
+    command: python run_bot.py
+    depends_on:
+      - web
+      - db
+    networks:
+      - network
 
 
   frontend:

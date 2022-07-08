@@ -74,7 +74,7 @@ export default {
         axios.defaults.headers.common['Authorization'] = `Token ${response.data.auth_token}`
         this.$router.push('/')
       }).catch(function () {
-        console.log("error"); // FIXME
+        alert("Неправильный логин/пароль")
       })
     },
 
