@@ -1,4 +1,8 @@
 <template>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
   <nav-bar></nav-bar>
   <div class="container">
     <div class="row mainDiv ">
@@ -7,11 +11,11 @@
           <div class="row uprow-first-content rounded-1 justify-content-center">
             <div class="row content-uprow">
               <div class="p-tag-div col-3">
-                <p class="p-tag">Тэги: Все </p>
+                <p class="p-tag">Тэги: {{selectedTag}} </p>
               </div>
               <div class="btns-div col-9">
-                <button class="btn btn-primary" @click.prevent="timeSort">По времени</button>
-                <button class="btn btn-primary" @click.prevent="ratingSort">По рейтингу</button>
+                <button class="btn btn-primary" >По времени</button>
+                <button class="btn btn-primary" >По рейтингу</button>
               </div>
             </div>
           </div>
@@ -34,8 +38,6 @@ import NavBar from "@/components/UI/NavBar";
 
 export default {
   name: "MainContentComponent",
-  methods: {
-  },
   components: {
     PostItem,
     TopUsers,
@@ -45,8 +47,13 @@ export default {
     posts: {
       type: Object,
       required: true
+    },
+    selectedTag: {
+      type: String,
+      required: false,
+      default: "Все"
     }
-  }
+  },
 }
 
 </script>
