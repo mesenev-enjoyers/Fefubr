@@ -36,7 +36,6 @@ export default {
       this.posts = response.data
       this.isPostsLoading = false
     },
-
   },
 
   mounted() {

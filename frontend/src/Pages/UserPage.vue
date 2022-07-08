@@ -28,9 +28,11 @@
       </form>
     </div>
     <div v-else-if="isAuthorized">
-      <div class="btn-sub-div">
-        <button class="btn-photo">Подписаться</button>
-<!--        ИЛИ ОТПИСАТЬСЯ-->
+      <div v-if="isSubscribeTo" class="btn-sub-div">
+        <button  class="btn-photo" @click="unsubscribeFromUser">Отписаться</button>
+      </div>
+      <div v-else class="btn-sub-div">
+        <button  class="btn-photo" @click="subscribeToUser">Подписаться</button>
       </div>
     </div>
     <div class="sorry" v-else>
@@ -63,11 +65,14 @@ export default {
   data() {
     return {
       user: {},
+      currentUserId: '',
       userTags: [], //Теги, на которые чел подписан
       userSubscribe: [], //Люди, на которых чел подписан
       userArticle: [], //Статье данного чела
       isAuthorized: localStorage.getItem('token') != null,
       isCurrentUser: false, // Проверка, что за чел перешл на страницу
+      isSubscribeTo: false,
+      subscribeId: '',
       file: ''
     }
   },
@@ -77,6 +82,8 @@ export default {
         axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
         axios.get('http://fefubr.tk/api/users/current').then((res) => {
           this.isCurrentUser = (res.data.id == this.$route.params.id)
+          this.currentUserId = res.data.id
+          this.checkSubscriptionTo()
         })
       }
     },
@@ -99,8 +106,8 @@ export default {
       })
     },
     getUserSubscribe() {
-      axios.get('http://fefubr.tk/api/users/subscribe?user=' + this.$route.params.id).then((res) => {
-        let tmp_userSubscribe = []
+      axios.get('http://fefubr.tk/api/users/subscribe?user=' + this.$route.params.id).then((res) => { //Подписки чела, на страницу
+        let tmp_userSubscribe = []                                                                        // мы перешли
         for (let i = 0; i < res.data.length; ++i) {
           tmp_userSubscribe.push(res.data[i])
         }
@@ -114,6 +121,37 @@ export default {
               tmp_userArticle.push(res.data[i])
             }
             this.userArticle = tmp_userArticle
+      })
+    },
+    checkSubscriptionTo() {
+      axios.get('http://fefubr.tk/api/users/subscribe?user=' + this.currentUserId).then((res) => { //Подписки чела, который першел на страницу
+        let currentUserSubs = res.data
+        let check = false
+        for (let i = 0; i < currentUserSubs.length; ++i) {
+          if (this.user.id === currentUserSubs[i].subscribe) {
+            check = true
+            this.subscribeId = currentUserSubs[i].id
+            break
+          }
+        }
+        this.isSubscribeTo = check
+        console.log(this.isSubscribeTo)
+      })
+    },
+    subscribeToUser() {
+      axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
+      axios.post('http://fefubr.tk/api/users/subscribe/', {
+        'user': this.currentUserId,
+        'subscribe': this.$route.params.id
+      }).then(() => {
+        this.isSubscribeTo = true
+      })
+    },
+    unsubscribeFromUser() {
+      axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`
+      axios.delete('http://fefubr.tk/api/users/subscribe/' + this.subscribeId).then(() => {
+        this.isSubscribeTo = false
+        console.log("all is good")
       })
     },
     handleFileUpload() {
