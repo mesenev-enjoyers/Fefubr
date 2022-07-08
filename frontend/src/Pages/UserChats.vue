@@ -20,5 +20,19 @@ export default {
 </script>
 
 <style scoped>
+#pictures {
+  margin-top: 15px;
+}
+#pictures img {
+  max-height: 30%;
+  max-width: 30%;
+}
+a {
+  text-decoration: none;
+  color: #5F77BF;
+}
 
+a:hover {
+  color: black;
+}
 </style>
