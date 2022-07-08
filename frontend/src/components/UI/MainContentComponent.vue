@@ -16,12 +16,12 @@
               <div class="btn-2-div">
                 <button class="btn-2 " >Подписаться</button>
               </div>
-              <div class="btns-div col-9">
-                <button class="btn " >По времени</button>
-                <button class="btn " >По рейтингу</button>
+              <div v-for="tag in allTags" :key="tag.id">
+                <div class="name-rate d-inline-flex">
+                  <a @click="$router.push('/tag/' + tag.id)">{{tag.name}}</a>
+                </div>
               </div>
             </div>
-
           </div>
 
           <div class="row downrow-first-content  rounded-1"  v-for="post in posts"  :key = "post.id">
@@ -40,6 +40,7 @@
 import PostItem from "@/Posts/PostItem";
 import TopUsers from "@/components/UI/TopUsers";
 import NavBar from "@/components/UI/NavBar";
+import axios from "axios";
 
 export default {
   name: "MainContentComponent",
@@ -57,8 +58,25 @@ export default {
       type: String,
       required: false,
       default: "Все"
+    },
+  },
+  data() {
+    return {
+      allTags: [],
     }
   },
+  methods: {
+    getAllTags() {
+      axios.get('http://fefubr.tk/api/content/tag').then((res) => {
+        this.allTags = res.data
+      }).catch((error) => {
+        console.log(error)
+      })
+    }
+  },
+  mounted() {
+    this.getAllTags()
+  }
 }
 
 </script>

@@ -10,12 +10,6 @@
           </div>
         </div>
       </div>
-    <div><h2>Все доступные Тэги: </h2></div>
-    <div v-for="tag in allTags" :key="tag.id">
-      <div class="name-rate d-inline-flex">
-        <a @click="$router.push('/tag/' + tag.id)">{{tag.name}}</a>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -26,7 +20,6 @@ export default {
   data() {
     return {
       TopUsers: [],
-      allTags: []
     }
   },
   methods: {
@@ -35,17 +28,9 @@ export default {
         this.TopUsers = res.data
       })
     },
-    getAllTags() {
-      axios.get('http://fefubr.tk/api/content/tag').then((res) => {
-        this.allTags = res.data
-      }).catch((error) => {
-        console.log(error)
-      })
-    }
   },
   mounted() {
     this.getTopUsers()
-    this.getAllTags()
   }
 }
 </script>
